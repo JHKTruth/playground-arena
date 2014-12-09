@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.jhkt.playground-arena</groupId>
+    <artifactId>main-project</artifactId>
+    <version>${jhkt-playground-arena.version}</version>
+  </parent>
+  
+  <groupId>com.jhkt.playground-arena</groupId>
+  <artifactId>examples-project</artifactId>
+  <packaging>pom</packaging>
+  <name>JHKTruth Playground Arena Examples Main Project</name>
+  <url>https://github.com/JHKTruth/playground-arena</url>
+  <description>
+    JHKTruth Playground Arena Examples Main Project will contain example sub projects.
+  </description>
+  
+  <scm>
+    <developerConnection>scm:git:http://github.com/JHKTruth/playground-arena/examples</developerConnection>
+  </scm>
+  
+  <modules>
+    <module>generic</module>
+  </modules>
+  
+</project>

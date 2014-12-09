@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang=en>
+<!--
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+//-->
+<head>
+    <meta charset="utf-8">
+    <link href="css/main.css" rel="stylesheet"></link>
+    <link href="css/html5css3specific.css" rel="stylesheet"></link>
+</head>
+<body>
+    <div class="clear">
+        <nav class="clear links genericBorderRadius genericBoxShadow">
+            <div class="linksHeader" id="toTransform">Generic examples</div>
+            <ul>
+                <li><a data-example-link href="controller/general/welcomeView">General Tests</a>
+                </li>
+                <li><a data-example-link href="controller/general/html5MainVelocityView">HTML5 Tasks</a>
+                </li>
+                <li><a data-example-link href="controller/hadoop/welcomeView">Hadoop</a>
+                </li>
+                <li><a data-example-link href="controller/cassandra/welcomeView">Cassandra</a>
+                </li>
+                <li><a data-example-link href="controller/mongoDB/welcomeView">MongoDB</a>
+                </li>
+                <li><a data-example-link href="controller/mySQL/welcomeView">MySQL</a>
+                </li>
+            </ul>
+        </nav>
+        
+        <section class="hProduct genericBorderRadius genericBoxShadow floatR" itemscope itemtype="http://www.data-vocabulary.org/Product/">
+            <details>
+                <summary class="panelHeader" itemprop="name">Screenshots</summary>
+                <article class="screenShotArticle">
+                    
+                    <div>
+                        <figure>
+                            <img data-img-summary="RequireJS JQuery Example" itemprop="image" src="images/screenshots/requireJSJQuerySS.jpg" alt="requireJSJQueryExample" />
+                            <figcaption>RequireJS+JQuery Example</figcaption>
+                        </figure>
+                    </div>
+                    
+                    <div>
+                        <figure>
+                            <img data-img-summary="Canvas Example" itemprop="image" src="images/screenshots/canvasExample.jpg" alt="CanvasExample" />
+                            <figcaption>Canvas Example</figcaption>
+                        </figure>
+                    </div>
+                    
+                    <div>
+                        <figure>
+                            <img data-img-summary="Hadoop Example" itemprop="image" src="" alt="HadoopExample" />
+                            <figcaption>Hadoop Example</figcaption>
+                        </figure>
+                    </div>
+                    
+                    <div>
+                        <figure>
+                            <img data-img-summary="Various DB Example" itemprop="image" src="images/screenshots/mySQLWelcome.jpg" alt="VariousDBExample" />
+                            <figcaption>Various DB Example [Just MySQL for now]</figcaption>
+                        </figure>
+                    </div>
+                    
+                </article>
+            </details>
+        </section>
+    </div>
+    
+    <div class="clear">
+        <section class="genericBorderRadius genericBoxShadow">
+            <details>
+                <summary class="panelHeader">Playground [left out items such as command, menu, meter, etcetera]</summary>
+                
+                <div class="columns">
+                    
+                    <div>
+                        <div class="floatL">
+                            <div class="clear">
+                                <canvas></canvas>
+                            </div>
+                        </div>
+                        <div class="floatR">
+                            <div class="clear padDirectChildren5b">
+                                <div>
+                                   <button class="css3Button genericBorderRadius" onclick="sessionStorage.setItem('imageData', document.querySelector('canvas').getContext('2d').getImageData(0, 0, 300, 150)); ">Set Sess</button>
+                                </div>
+                                <div>
+                                   <button class="css3Button genericBorderRadius" onclick="window.open(document.querySelector('canvas').toDataURL('image/png'));">Data Url</button>
+                                </div>
+                                <div>
+                                   <button class="css3Button genericBorderRadius" onclick="document.querySelector('canvas').getContext('2d').drawImage(document.getElementById('videoElement'), 10, 10, 180, 80, 120, 70, 180, 80);">Copy Vid</button>
+                                </div>
+                                <div>
+                                    Input: <input id="messageInput" type="text" style="width: 60px;"/>
+                                </div>
+                                <div>
+                                    <button class="css3Button genericBorderRadius" onclick="messageTest();">Message me</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        &nbsp;
+                    </div>
+                    
+                    <div style="width: 425px; height: 300px;" class="overflow clear">
+	                    <iframe id="messagePlayground" src="iframes/messageIframeContent.html" style="width: 500px; height: 320px;"></iframe>
+	                </div>
+                    
+                    <div class="columnsBreakBefore pad10b">
+                        
+                        <video controls x-webkit-airplay="allow" tabindex="0" style="width: 300px; height: 150px;" id="videoElement" poster="images/apache.png">
+                            <!-- 
+                            <source src="*.mp4" type='video/mp4; codecs="avc1.42#01E, mp4a.40.2"' >
+                            <source src="*.webm" type='video/webm; codecs="vp8, vorbis"'>
+                            <source src="*.ogg" type='video/orgg; codecs="theora, vorbis"'>
+                             -->
+                        </video>
+                    </div>
+                    
+                    <div>
+                        <iframe width="300px" height="150px" src="http://www.youtube.com/embed/9PRRCQWCvbc" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <fieldset style="text-align:left;">
+                        <legend>Main form inputs</legend>
+                        <div class="floatL exampleListing">
+                            <div>
+                                <div>URL:</div> <div><input type="url" formnovalidate /></div>
+                            </div>
+                            <div>
+                                <div>Date:</div> <div><input type="date" /></div>
+                            </div>
+                            <div>
+                                <div>Time:</div> <div><input type="time" /></div>
+                            </div>
+                            <div>
+                                <div>Month:</div> <div><input type="month" /></div>
+                            </div>
+                            <div>
+                                <div>Progress:</div> <div><progress value="80%" max="100"></progress></div>
+                            </div>
+                            <div>
+                                DataList: <input type="text" list="sampleList" required autocomplete />
+                                            <datalist id="sampleList">
+                                                <option label="First" value="0" />
+                                                <option label="Second" value="1" />
+                                            </datalist>
+                            </div>
+                        </div>
+                        
+                        <div class="floatR exampleListing">
+                            <div>    
+                                <div>Week:</div> <div><input type="week" /></div> 
+                            </div>
+                            <div>
+                                <div>Number:</div> <div><input type="number" min="10" max="50" step="10" /></div> 
+                            </div>
+                            <div>
+                                <div>Range:</div> <div><input type="range" min="0" max="100" id="rangeExp" role="slider"
+                                            aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+                                            onchange="this.setAttribute('aria-valuenow', this.value)" /></div>
+                                <output onforminput="value=rangeExp.value"></output>
+                            </div>
+                            <div>
+                                <div>Search:</div> <div><input type="search" /></div>
+                            </div>
+                            <div>
+                                <div>Color:</div> <div><input type="color" /></div>
+                            </div>
+                            <div>
+                                <div>Email:</div> <div><input type="email" multiple /></div> 
+                            </div>
+                            <div>    
+                                <div>Pattern:</div> <div><input type="text" pattern="[0-9]{3}" oninputchange="console.info('Have provided text for pattern ', this.value);" /></div>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="clear pad10b">
+                            File: <input type="file" multiple />
+                            
+                        </div>
+                        
+                        <div class="pad10b">
+                            Drop: <div id="drop"></div>
+                        </div>
+                        
+                        <div>
+                            <audio controls autoplay loop>
+                                <!--
+                                <source src="*.mp3" type="audio/mp3">
+                                <source src="*.wav" type="audio/wav">
+                                <source src="*.ogg" type="audio/ogg"> 
+                                 -->
+                            </audio>
+                        </div>
+                    </fieldset>
+                </div>
+                
+            </details>
+        </section>
+        
+        <aside>
+            <nav class="links genericBorderRadius genericBoxShadow">
+                <div class="linksHeader">Project Links</div>
+                <ul type="circle">
+                    <li><a data-project-link href="http://code.google.com/p/jihoonkim-playground-arena/">Code</a>
+                    </li> 
+                </ul>
+            </nav>
+        </aside>
+    </div>
+    <script type="text/javascript" src="js/genericScript.js"></script>
+    <script type="text/javascript">
+        
+        (function() {
+            
+        	/*
+        	 * Note that data urls are embedded in the page, so they won't be cached across different pages. In another words 
+        	 * declare them within css as background
+        	 */
+            var apacheImageBase64 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAABVCAIAAACDwjxUAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAAsSAAALEgHS3X78AAAAFnRFWHRDcmVhdGlvbiBUaW1lADAxLzA0LzA4ORPzsQAAABh0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzT7MfTgAABBF0RVh0WE1MOmNvbS5hZG9iZS54bXAAPD94cGFja2V0IGJlZ2luPSIgICAiIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNC4xLWMwMzQgNDYuMjcyOTc2LCBTYXQgSmFuIDI3IDIwMDcgMjI6Mzc6MzcgICAgICAgICI+CiAgIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOnhhcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyI+CiAgICAgICAgIDx4YXA6Q3JlYXRvclRvb2w+QWRvYmUgRmlyZXdvcmtzIENTMzwveGFwOkNyZWF0b3JUb29sPgogICAgICAgICA8eGFwOkNyZWF0ZURhdGU+MjAwOC0wMS0wNFQxOTowNDo0M1o8L3hhcDpDcmVhdGVEYXRlPgogICAgICAgICA8eGFwOk1vZGlmeURhdGU+MjAwOC0wMS0yOFQxMDowMjo1M1o8L3hhcDpNb2RpZnlEYXRlPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIj4KICAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9wbmc8L2RjOmZvcm1hdD4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgw+G03gAAHoBJREFUeJztfXtwXMW559fnfc68JM1Ish4zkh9I8iuRbVguxnCLG8zeqo3lJbu5i0m2NiFkUySk+GPxI5sC7NqqLUOo2iK4kloSvKnNYmOSvUg2qYvlBDYBm2CwDAakGVtgaUaWLc2MXjNzZuY8uvePxifHZx6W5YdkmN8fU2fOnO7v6+5ff/3113160Llz56CCCq41OITQfOtQwRcQzHwrUMEXExWLVcF1QcViVXBdULFYFVwXzJZYhJCinxV8sUHpUfh5WXCXfcKikQXr69VoXMFNAYSQxSfrGmZBr8tYLItGGGNKJuuiYre+2HDwiWEY+wVcjlslLZadUpRMpmmapqnrumEY9CZUiPXFBeUNwzAMw3Acx/M8y7IsyxJC6E37Y4UobrEIIQghu5UyDCOfz2OMa2pqfD6fIAiUvNevYBXMO6j5MAxjeno6mUwyDCOKIsdxlBsWvYpSCCUSicK7lE+maRJCKKXy+XxTU5PX662Q6csJjPHU1NTY2BjP8xa9WJa1O152FCGWZaUoW7PZrCAIzc3NHHd5T7+CLzYMw4hGo4ZhSJLE8zw1WkW5xaBigIvelaZpoig2NTVVWFUBAHAcFwwGJUnSNI16SmBz8C9BMpm0p7QGQdM08/m8qqodHR0sy0LFT6/gojtlmubg4KAgCKIoUo++0GgVsVhwkV6GYbS0tFRYVYEFSgOWZZuamnRdt6JOhSxyzgqt5wzDYBjG7XZDhVUV2EAjBm63WxAEwzA4jrM4Y3+siOdE3XZd12tra628boDGFdwsoByqrq6Ox+M08FT4TJE4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",
+                cancelEvent = function(e) { e = e || window.event; e.preventDefault(); return false; },
+                canvas = document.querySelector("canvas"),
+                apacheImg = new Image();
+            
+            apacheImg.addEventListener("load", function(event) {
+                
+                var ctx = canvas.getContext("2d");
+                try{
+                    ctx.drawImage(apacheImg, 10, 10, 180, 80, 120, 70, 180, 80);
+                    //later possibly drawImage w/ video
+                }catch(drawerror) {
+                    console.error("Chrome has a different API then FF ", drawerror, arguments);
+                    ctx.drawImage(apacheImg, 120, 70, 180, 80);
+                }
+                ctx.strokeStyle = "#E6E6FA";
+                ctx.lineWidth = 3; 
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'bevel';
+                
+                var addColorStop = [{pos: 1, color: 'rgba(1,159,98,0)'}, {pos: 0.9, color: '#019F62'}, {pos: 0, color: '#A7D30C'}], 
+                    radgrad = ctx.createRadialGradient(45,45,10,52,50,30), len = addColorStop.length;  
+                while(len--){
+                    var step = addColorStop[len];
+                    radgrad.addColorStop(step.pos, step.color);
+                }
+                
+                ctx.fillStyle = radgrad;
+                ctx.fillRect(10, 10, 280, 130);
+                
+                var text = "Generic Example",
+                    linGradient = ctx.createLinearGradient(60, 100, ctx.measureText(text).width, 100);
+                linGradient.addColorStop(0, "#000000");
+                linGradient.addColorStop(0.5, "#FF0000");
+
+                ctx.fillColor = linGradient;
+                ctx.font = "italic bold 13px Cursive, Tahoma, Verdana";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.shadowColor = "#FF0000";
+                ctx.shadowOffsetX = 4;
+                ctx.shadowOffsetY = 4;
+                ctx.shadowBlur = 5;
+
+                //console.info(ctx.measureText("Generic Example"));
+                ctx.fillText(text, 60, 100);
+                
+                var drawPaths = [{x: 170, y: 30}, {x: 150, y: 30}, {x: 165, y: 45}, {x: 157, y: 60}, {x: 180, y: 53}, {x: 203, y: 60}, {x: 195, y: 45}, {x: 210, y: 30}, {x: 190, y: 30} ],
+                    drawPathsLen = drawPaths.length;
+                 
+                ctx.moveTo(180, 15);
+                while(drawPathsLen--){
+                    var coord = drawPaths[drawPathsLen];
+                    ctx.lineTo(coord.x, coord.y);
+                }
+                ctx.closePath();
+                ctx.stroke();
+                ctx.fillStyle = "#FAFAD2";
+                ctx.fill();
+                
+                ctx.save(); //do some other stuff later and possibly restore
+            }, false);
+            apacheImg.src = apacheImageBase64;
+    
+            var imageSrcGetter = /^.*?;(.*)/;
+            var cancelIfNotSpecificType = function(event) {
+    
+                var result = imageSrcGetter.exec(event.dataTransfer.getData('text/plain'));
+                if(result.length > 1){
+                    return cancelEvent(event);
+                }
+            };
+            
+            canvas.addEventListener("dragenter", cancelIfNotSpecificType, false);
+            canvas.addEventListener("dragover", cancelIfNotSpecificType, false);
+            canvas.addEventListener("dragleave", cancelIfNotSpecificType, false);
+            
+            canvas.addEventListener("drop", function(event) {
+                
+                event = event || window.event;
+                
+                var result = imageSrcGetter.exec(event.dataTransfer.getData('text/plain'));
+                if(result.length > 1){
+                    event.preventDefault();
+                    event.cancelBubble = true;
+                    
+                    var posx = event.pageX - canvas.offsetLeft, 
+                        posy = e.pageY - canvas.offsetTop,
+                        pasteImage = new Image();
+                        
+                    pasteImage.addEventListener("load", function(event) {
+                        canvas.drawImage(pasteImage, posx, posy);
+                    }, false);
+                    pasteImage.src = result[1];
+                } 
+                return false;
+            }, false);
+            
+            if(typeof Worker !== "undefined" && 
+                    typeof SharedWorker !== "undefined"){
+                try{
+                    var shworker = new SharedWorker("js/worker.js");
+                    shworker.port.start();
+                    shworker.port.postMessage(JSON.stringify({taskClazz: "ns.GeolocationTask"}));
+                    shworker.port.addEventListener("message", function(event) {
+                        console.info("Worker Result ", event);
+                        shworker.port.terminate();
+                    }, false);
+                    shworker.port.addEventListener("error", function(event) {
+                        console.error("Worker Error ", event.message, event.filename, event.lineno);
+                        shworker.port.terminate();
+                    }, false);
+                }catch(error) {
+                    console.error("Should error out for FF 8");
+                }
+            }
+            
+            var drop = document.getElementById("drop");
+            
+            drop.addEventListener("dragenter", function(event) {
+                drop.style.background = "rgba(0, 150, 0, .2)";
+                return cancelEvent(event);
+            }, false);
+            drop.addEventListener("dragover", cancelEvent, false);
+            drop.addEventListener("dragleave", function(event) {
+                drop.style.background = "#FFFFFF";
+                return cancelEvent(event);
+            }, false);
+            
+            drop.addEventListener("drop", function(event) {
+                /*
+                 * To compensate for FF:
+                 *    if you drop an image on the drop zone in FF it actually redirect the browser off to the value of 
+                 *    getData('Text'). For you it looks like a link that is image sources and link hrefs. So that's easy, 
+                 *    you prevent the browser's default action
+                 */
+                event = event || window.event;
+                event.preventDefault();
+                event.cancelBubble = true;
+                
+                var dataTransfer = event.dataTransfer, 
+                    dropContent = null;
+                
+                if(dataTransfer.files){
+                    dropContent = "File : ";
+                    var fileListing = dataTransfer.files, fileLength = fileListing.length;
+                    while(fileLength--) {
+                        var fileInfo = fileListing[fileLength];
+                        dropContent += fileInfo.name + "/" + fileInfo.size + ";";
+                    }
+                }else{
+                    dropContent = event.dataTransfer.getData('text/plain');
+                }
+                this.innerHTML = dropContent;
+                return false;
+            }, false);
+            
+            //When one drops the image in IE or Chrome, you get "null" as the text in drop zone. Fix it by setting some data under the Text data type.
+            var imgs = document.getElementsByTagName("img"), 
+                length = imgs.length;
+            
+            while(length--) {
+                imgs[length].addEventListener("dragstart", function(event) {
+                    
+                    event = event || window.event;
+                    var dataTransfer = event.dataTransfer;
+                    //event.dataTransfer.setData("Text", this.getAttribute("alt"));
+                    dataTransfer.setData("text/plain", "Summary of image is: " + this.dataset.imgSummary + ";" + this.src);
+                    dataTransfer.setDragImage(this, 0, 0);
+                }, false);
+    
+                imgs[length].addEventListener("dragend", function(event) {
+                    
+                    event = event || window.event;
+                    var target = event.target;
+                    target.src = apacheImageBase64;
+                }, false);
+            }
+    
+            var messagePlayground = null,
+                messageInput = null;
+            function messageTest() {
+                messagePlayground = messagePlayground || document.getElementById("messagePlayground"),
+                messageInput = messageInput || document.getElementById("messageInput");
+                messagePlayground.contentWindow.postMessage(messageInput.value, '*');
+            }
+
+            window.messageTest = messageTest;
+        })();
+    </script>
+    
+</body>
+</html>

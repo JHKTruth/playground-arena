@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+    	<!-- Since will be using Tomcat mainly for development and it doesn't support write to context 
+        <property name="session_factory_name">java:hibernate/MySQLSessionFactory</property>
+         -->
+        
+        <!-- Disable the second-level cache -->
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+        <property name="connection.driver_class">org.gjt.mm.mysql.Driver</property>
+        <property name="connection.url">jdbc:mysql://127.0.0.1:3306/JPAMySQL</property>
+        <property name="connection.username">mySQLRunner</property>
+        <property name="connection.password">jpaExample</property>
+        <!-- 
+        <property name="connection.datasource">java:/comp/env/jdbc/JPAMySQL</property>
+         -->
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">jta</property>
+        <!-- delegates to database (JDBC) transactions -->
+        <property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+        <!-- So to actually play around w/ transaction -->
+        <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+        <!-- <property name="dialect">org.hibernate.dialect.MySQLMyISAMDialect</property> 
+            In case to play around with text search and etcetera <property name="dialect">org.hibernate.dialect.MySQLDialect</property> 
+            By default Hibernate EntityManager scans for both class, hbm types. -->
+        <property name="archive.autodetection">class, hbm</property>
+        <property name="hbm2ddl.auto">create-drop</property>
+        <!-- <property name="hbm2ddl.import_files">path</property> C3P0 connection 
+            pool provider -->
+        <property name="c3p0.min_size">5</property>
+        <property name="c3p0.max_size">20</property>
+        <property name="c3p0.timeout">300</property>
+        <property name="c3p0.max_statements">50</property>
+        <property name="c3p0.idle_test_period">3000</property>
+        <!-- <property name="max_fetch_depth">1</property> To check out performance/generated 
+            sql difference -->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        <!-- <property name="generate.statistics">true</property> -->
+        <property name="id.new_generator_mappings">true</property>
+        <mapping
+            package="com.jhkt.playgroundArena.db.sql.mysql.beans" />
+        
+    </session-factory>
+</hibernate-configuration>

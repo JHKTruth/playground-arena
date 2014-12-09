@@ -1,0 +1,145 @@
+@CHARSET "ISO-8859-1";
+
+.gwSlidesContent {
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+    width: 770px;
+    z-index: 0;
+}
+
+.gwSlidesFrame {
+    height: 680px;
+    left: -80px;
+    position: absolute;
+    top: -3px;
+    width: 950px;
+    z-index: 0;
+}
+
+.gwSlidesExample {
+    height: 630px;
+    position: relative;
+    width: 800px;
+}
+
+/*
+ * Slideshow style
+ */
+.gwSlides {
+    left: 4px;
+    position: absolute;
+    top: 15px;
+    z-index: 100;
+}
+
+/*
+ * Slides container
+ * Important:
+ * Set the width of your slides container
+ * If height not specified height will be set by the slide content
+ * Set to display none, prevents content flash
+ */
+.gwSlidesContainer {
+    display: none;
+    height: 580px;
+    overflow: hidden;
+    position: relative;
+    width: 760px;
+}
+
+/*
+ * Each slide
+ * Important:
+ * Set the width of your slides
+ * Offeset for the 20px of padding
+ * If height not specified height will be set by the slide content
+ * Set to display block
+ */
+.gwSlides .gwSlide {
+    display: block;
+    height: 550px;
+    padding: 20px;
+    width: 740px;
+}
+
+/*
+ * Next/prev buttons
+ */
+.gwSlides .gwSlidesNext, .gwSlides .gwSlidesPrev {
+    display: block;
+    height: 43px;
+    left: -39px;
+    position: absolute;
+    top: 280px;
+    width: 24px;
+    z-index: 101;
+}
+
+.gwSlides .gwSlidesNext {
+    left: 790px;
+}
+
+/*
+ * Pagination
+ */
+.pagination {
+    margin: 26px auto 0;
+    width: 100px;
+}
+
+.pagination li {
+    float: left;
+    list-style: none;
+    margin: 0 1px;
+}
+
+.pagination li a {
+    background-image: url(images/slider/pagination.png);
+    background-position: 0 0;
+    display: block;
+    float: left;
+    height: 0;
+    overflow: hidden;
+    padding-top: 12px;
+    width: 12px;
+}
+
+.pagination li.current a {
+    background-position:0 -12px;
+}
+
+/*
+ * Footer
+ */
+.gwSlidesFooter {
+    border-top: 1px solid #dfdfdf;
+    margin: 5px auto;
+    padding: 4.5px 0 18px;
+    text-align: center;
+    width: 580px;
+}
+
+.gwSlidesFooter p {
+    font-size: 0.75em;
+    margin: 4.5px 0;
+}
+
+/*
+ * Type and anchors
+ */
+a:link, a:visited {
+    color: #599100;
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    color: #599100;
+    text-decoration: underline;
+}
+
+.gwSlides .link {
+    display: block;
+    font-weight: 800;
+    margin-top: 10px;
+}

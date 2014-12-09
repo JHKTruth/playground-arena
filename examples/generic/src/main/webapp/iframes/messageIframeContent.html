@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<!--
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+//-->
+    <meta charset="utf-8">
+    <title>Message/Template Layout Iframe Content</title>
+    <link href="../css/main.css" rel="stylesheet"></link>
+    <link href="../css/html5css3specific.css" rel="stylesheet"></link>
+    <style type="text/css">
+        body {
+            width: 100%;
+            display: -moz-box;
+            display: -webkit-box;
+            display: box;
+            
+            -moz-box-pack: center;
+            -webkit-box-pack: center;
+            box-pack: center;
+            
+            -moz-flex-pack: center;
+            -webkit-flex-pack: center;
+            flex-pack: center;
+        }
+        
+        #flexibleBoxModelContainer {
+            max-width: 960px;
+            margin: 15px 0px;
+            
+            display: -moz-box;
+            display: -webkit-box;
+            display: box;
+            
+            -moz-box-orient: vertical;
+            -webkit-box-orient: vertical;
+            box-orient: vertical;
+            
+            -moz-flex-direction: vertical;
+            -webkit-flex-direction: vertical;
+            flex-direction: vertical;
+            
+            -moz-box-flex: 1;
+            -webkit-box-flex: 1;
+            box-flex: 1;
+            
+            -moz-flex-grow: 2;
+            -webkit-flex-grow: 2;
+            flex-grow: 2;
+            
+            -moz-flex-shrink: 1;
+            -webkit-flex-shrink: 1;
+            flex-shrink: 1;
+        }
+        
+        #content {
+            display: -moz-box;
+            display: -webkit-box;
+            display: box;
+            
+            -moz-box-orient: horizontal;
+            -webkit-box-orient: horizontal;
+            box-orient: horizontal;
+            
+            -moz-box-direction: reverse;
+            -webkit-box-direction: reverse;
+            box-direction: reverse;
+            
+            -moz-flex-direction: horizontal reverse;
+            -webkit-flex-direction: horizontal reverse;
+            flex-direction: horizontal reverse;
+            
+            -moz-box-pack: justify;
+            -webkit-box-pack: justify;
+            box-pack: justify;
+            
+            -moz-flex-pack: justify;
+            -webkit-flex-pack: justify;
+            flex-pack: justify;
+            
+            -mox-box-align: stretch;
+            -webkit-box-align: stretch;
+            box-align: stretch; /* default */
+            
+            -mox-flex-align: stretch;
+            -webkit-flex-align: stretch;
+            flex-align: stretch; /* default */
+        }
+        
+        #mainSection {
+            -moz-box-flex: 1;
+            -webkit-box-flex: 1;
+            box-flex: 1;
+            
+            -moz-flex-grow: 2;
+            -webkit-flex-grow: 2;
+            flex-grow: 2;
+            
+            -moz-flex-shrink: 1;
+            -webkit-flex-shrink: 1;
+            flex-shrink: 1;
+            
+            margin: 5px;
+        }
+        
+        #mainAside {
+            width: 80px;
+            margin: 5px 10px;
+        }
+        
+        .tpl-one {
+            position: "a";
+        }
+        .tpl-two {
+            position: "b";
+        }
+        .tpl-two * {
+            color: white;
+        }
+        .tpl-three {
+            position: "c";
+        }
+        #tpl-holder {
+            display: "@.b" / 100px "ccc" * minmax(min-content, 200px);
+        }
+        #tpl-holder::slot(b) {
+            background-color: #555;
+        }
+        #tpl-holder::slot(c) {
+            background-color: #DDD;
+        }
+    </style>
+</head>
+<body style="width: 90%;">
+    <div id="flexibleBoxModelContainer">
+        <div id="content">
+            <section id="mainSection">
+                <article>
+                    <header>
+                        <hgroup>
+                            <h1>Message Example</h1>
+                            <h2>Flexible Box Model Example</h2>
+                            <h3>Template Layout Example</h3>
+                            <time datetime="2012-01-10" pubdate>Created on 01-10-2012</time>
+                        </hgroup>
+                    </header>
+                    Page to be linked as an Iframe for index.html for Message API Example.
+                    
+                    <div>
+                       Output: <span id="messageOutput" />
+                    </div>
+                    
+                    <div id="tpl-holder">
+                       <div class="tpl-one">
+                           Template One
+                       </div>
+                       <div class="tpl-two">
+                           Template Two
+                       </div>
+                       <div class="tpl-three">
+                           Template Three
+                       </div>
+                    </div>
+                </article>
+            </section>
+            
+            <aside id="mainAside">
+                <div class="links genericBorderRadius genericBoxShadow">
+                    <div class="linksHeader">Links</div>
+	                <ul type="circle">
+	                    <li><a data-project-link href="">Void</a>
+	                    </li> 
+	                </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/thirdParty/jQuery/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../js/thirdParty/jQuery/jquery-ui-1.8.18.custom.min.js"></script>
+    <script type="text/javascript" src="../js/thirdParty/jQuery/jquery.tpl_layout1.1.6.js"></script>
+    <script type="text/javascript" src="../js/thirdParty/jQuery/jquery-ui-i18n.js"></script>
+    <script type="text/javascript">
+
+    var messageOutput = null;
+    function initiate() {
+        window.addEventListener("message", receiver, false);
+        messageOutput = document.getElementById("messageOutput");
+    }
+
+    function receiver(event) {
+        //event.source.postMessage("Got the message " + event.data, event.origin);
+        messageOutput.innerHTML = "Origin/data: " + event.origin + "/" + event.data;
+    }
+
+    $(document).ready(function() {
+    	initiate();
+        $.setTemplateLayout();
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.jhkt.playground-arena</groupId>
+    <artifactId>db-project</artifactId>
+    <version>${jhkt-playground-arena.version}</version>
+  </parent>
+  
+  <groupId>com.jhkt.playground-arena.db.nosql</groupId>
+  <artifactId>nosql-project</artifactId>
+  <packaging>pom</packaging>
+  <name>JHKTruth Playground Arena DB NoSql Main Project</name>
+  <url>https://github.com/JHKTruth/playground-arena</url>
+  <description>
+    JHKTruth Playground Arena DB NoSql Main Project will contain sub projects for NoSql modules.
+  </description>
+  
+  <scm>
+    <developerConnection>scm:git:https://github.com/JHKTruth/playground-arena/db/nosql</developerConnection>
+  </scm>
+  
+  <modules>
+    <module>cassandra</module>
+    <module>mongodb</module>
+  </modules>
+  
+</project>

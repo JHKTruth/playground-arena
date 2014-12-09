@@ -1,0 +1,246 @@
+@CHARSET "UTF-8";
+
+/*
+ * Since CSS are resolved right to left, technically below are not optimal constructs as 
+ * the last entry should be class or id selectors; however it's just for playing around
+ */
+
+#container {
+    font: 500 13px Trebuchet MS, Tahoma, Verdana;
+}
+
+#fieldSet > div {
+    clear: both;
+    position: relative;
+}
+
+#fieldSet div:first-child {
+    color: #ff6666;
+    float: left;
+    width: 250px;
+}
+
+#fieldSet div:first-child ~ div {
+    color: #708090;
+    float: left;
+    overflow-x: auto;
+    padding-left: 5px;
+    width: 700px;
+}
+
+#warningMessage {
+    border: 1px solid #CCCCCC;
+    color: #006699;
+}
+
+.absolute { 
+	position: absolute;
+}
+
+.clear {
+    clear: both;
+}
+
+.descriptionStyle {
+    color: #708090;
+    font: bold 11px verdana;
+    width: 900px;
+}
+
+.exampleListing > div {
+    clear: both;
+}
+
+.exampleListing > div > div:nth-child(even) {
+    float: right;
+}
+
+.exampleListing > div > div:nth-child(odd) {
+    float: left;
+}
+
+.errorStyle {
+    color:#ff6666;
+    font: bold 11px verdana;
+}
+
+.floatL {
+    float: left;
+}
+
+.floatR {
+    float: right;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.iconWidth {
+	width: 16px;
+}
+
+.inlineBlock {
+	display: inline-block !important;
+}
+
+.letterPressBG {
+    background-color: #565656;
+}
+
+.links {
+    background-color: #F5F5F5;
+    border: 2px solid #CCCCCC;
+    font-weight: bold;
+    padding: 0px;
+    vertical-align: top;
+}
+
+.linksHeader {
+    background-color: #FFFFE0;
+    border-bottom: 2px solid #CCCCCC;
+    color: #6A5ACD;
+    padding: 3px 4px;
+    /*outline: 2px solid red;*/
+}
+
+.overflow {
+	overflow: auto;
+}
+
+.marginAuto {
+    margin: auto;
+}
+
+.margin5t { margin-top: 5px; }
+.margin5b { margin-bottom: 5px; }
+.margin5r { margin-right: 5px; }
+.margin5l { margin-left: 5px; }
+.margin5 { margin: 5px; }
+
+.margin10t { margin-top: 10px; }
+.margin10b { margin-bottom: 10px; }
+.margin10r { margin-right: 10px; }
+.margin10l { margin-left: 10px; }
+.margin10 { margin: 10px; }
+
+.margin15t { margin-top: 15px; }
+.margin15b { margin-bottom: 15px; }
+.margin15r { margin-right: 15px; }
+.margin15l { margin-left: 15px; }
+.margin15 { margin: 15px; }
+
+.move {
+    cursor: move;
+}
+
+.pad5t { padding-top: 5px; }
+.pad5b { padding-bottom: 5px; }
+.pad5r { padding-right: 5px; }
+.pad5l { padding-left: 5px; }
+.pad5 { padding: 5px; }
+
+.pad10t { padding-top: 10px; }
+.pad10b { padding-bottom: 10px; }
+.pad10r { padding-right: 10px; }
+.pad10l { padding-left: 10px; }
+.pad10 { padding: 10px; }
+
+.pad15t { padding-top: 15px; }
+.pad15b { padding-bottom: 15px; }
+.pad15r { padding-right: 15px; }
+.pad15l { padding-left: 15px; }
+.pad15 { padding: 15px; }
+
+.padDirectChildren5b > * {
+    padding-bottom: 5px;
+}
+
+.panelHeader {
+    background-color: #F0FFFF;
+    border-bottom: 3px solid #3C78B5;
+    color: black;
+    font-weight: bold;
+    padding: 3px;
+    text-align: center;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.propertyContainer > div {
+	clear: both;
+	height: 30px;
+	line-height: 28px;
+	position: relative;
+	width: 100%;
+}
+
+.propertyContainer > div:nth-child(odd) {
+	background-color: white;
+}
+
+.propertyContainer > div:nth-child(even) {
+	background-color: #F0F0F0;
+}
+
+.propertyContainer > div > div:first-child {
+	float: left;
+	padding-left: 12px;
+	width: 30%;
+}
+
+.propertyContainer > div > div:last-child {
+	float: left;
+	padding-right: 5px;
+	width: 60%;
+}
+
+.relative {
+    position: relative;
+}
+
+.screenShotArticle img {
+    width: 100%;
+}
+
+.screenShotArticle div {
+    float: left;
+    height: 200px;
+    width: 25%;
+}
+
+.subSectionDescription {
+    width: 80%;
+}
+
+.subSectionDescription .descriptionHeading {
+    color: FF9966;
+    font: bold 12px Helvetica;
+    text-decoration: underline;
+}
+
+.subSectionDescription .descriptionText {
+    font: 15px Garamond;
+}
+
+.textCenter {
+    text-align: center
+}
+
+a:hover, button:hover {
+    cursor: pointer;
+}
+
+body {
+    background-color: #F0F0F0;
+    color: #666666;
+    font: 12px verdana,arial,helvetica,sans-serif;
+    padding: 10px;
+}
+
+li {
+    font: bold 12px Helvetica;
+    padding-bottom: 5px;
+}

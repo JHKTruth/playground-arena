@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang=en>
+<!--
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+//-->
+    <head>
+        <meta charset="utf-8">
+        <title>HTML5 Main</title>
+        
+        #set( $applicationVersion = ${env.getProperty("application.version")} )
+        #set( $mainJsUrl = "/controller/js-${applicationVersion}/main.js" )
+        #set( $requireJQueryJsUrl = "/controller/js-${applicationVersion}/require-jquery.js" )
+        
+        #set( $html5ExamplesJsUrl = "/controller/js-${applicationVersion}/html5Examples.js" )
+        #set( $arrowPrevImageUrl = "/controller/css-${applicationVersion}/thirdParty/jQuery/plugins/images/slider/arrow-prev.png" )
+        #set( $arrowNextImageUrl = "/controller/css-${applicationVersion}/thirdParty/jQuery/plugins/images/slider/arrow-next.png" )
+        #set( $exampleFrameImageUrl = "/controller/css-${applicationVersion}/thirdParty/jQuery/plugins/images/slider/example-frame.png" )
+        
+        #set( $allCssUrl = "/controller/css-${applicationVersion}/all.css" )
+        
+        <link href="#springUrl(${allCssUrl})" rel="stylesheet"></link>
+    </head>
+    
+    <body>
+        <div class="clear">
+            <nav class="clear links genericBorderRadius genericBoxShadow">
+                <div class="linksHeader" id="toTransform">#springMessage("PAGE_LINKS")</div>
+                <ul>
+                    <li><a data-example-link href="#springUrl('/index.html')">#springMessage("MAIN_INDEX")</a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <section class="hProduct genericBorderRadius genericBoxShadow floatR" itemscope itemtype="http://www.data-vocabulary.org/Product/">
+                <details>
+                    <summary class="panelHeader" itemprop="name">#springMessage("REQUIRE_JS_PAGE_DESC")</summary>
+                    <article class="pad10">
+                        <div class="gwSlidesContent">
+                            <div class="gwSlidesExample">
+                                <div class="gwSlides">
+                                    <div class="gwSlidesContainer">
+                                        
+                                        <div class="gwSlide">
+                                            <h1>#springMessage("CANVAS_EXAMPLE")</h1>
+                                            <canvas id="canvasExperimental" style="width: 700px; height: 600px;"></canvas>
+                                        </div>
+                                        
+                                        <div class="gwSlide">
+                                            <h1>#springMessage("TODO")</h1>
+                                            <p>#springMessage("AN_ANOTHER_EXAMPLE")</p>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="gwSlidesPrev"><img src="#springUrl(${arrowPrevImageUrl})" width="24" height="43" alt="Arrow Prev"></a>
+                                    <a href="#" class="gwSlidesNext"><img src="#springUrl(${arrowNextImageUrl})" width="24" height="43" alt="Arrow Next"></a>
+                                </div>
+                                <img src="#springUrl(${exampleFrameImageUrl})" width="739" height="341" alt="Example Frame" class="gwSlidesFrame">
+                            </div>
+                            
+                            <div class="gwSlidesFooter">
+                                #springMessage("SLIDES_REFERENCE")
+                            </div>
+                        </div>          
+                    </article>
+                </details>
+            </section>
+        </div>
+        
+        <script type="text/javascript" data-main="#springUrl(${mainJsUrl})" src="#springUrl(${requireJQueryJsUrl})"></script>
+        
+        <!--
+        	Shaders are pieces of code that run directly on a graphics card. They describe how a scene--how you refer to a 3D canvas when working with WebGL--should be rendered.
+        	Many of these little programs perform mathematical transformations that would otherwise run very slowly in JavaScript. In fact, we are pointing these out because they 
+        	are not JavaScript; they are written in a way that WebGL can understand. These sections of code will be read in like text files and passed to the graphics hardware.
+        -->
+        <script id="shader-fs" type="x-shader/x-fragment">
+        	#ifdef GL_ES
+        	precision highp float;
+        	#endif
+        	
+        	varying vec4 vColor;
+        	
+        	void main(void) {
+        		gl_FragColor = vColor;
+        	}
+        </script>
+        <script id="shader-vs" type="x-shader/x-vertex">
+        	attribute vec3 aVertexPosition;
+        	attribute vec4 aVertexColor;
+        	
+        	uniform mat4 uMVMatrix;
+        	uniform mat4 uPMatrix;
+        	
+        	varying vec4 vColor;
+        	
+        	void main(void) {
+        		gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+        		vColor = aVertexColor;
+        	}
+        </script>
+        <script type="text/javascript" src="#springUrl(${html5ExamplesJsUrl})"></script>
+    </body>
+</html>

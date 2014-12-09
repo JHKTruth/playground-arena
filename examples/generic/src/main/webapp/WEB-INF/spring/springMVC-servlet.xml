@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/util 
+        http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+    
+    <!-- 
+    You can use compound or nested property names when you set bean properties, as long as all components
+    of the path except the final property name are not null.
+        <property name="fred.bob.sammy" value="123" />
+    
+    Thus, although initialization lifecycle callback methods are called on all objects regardless of scope, 
+    in the case of prototypes, configured destruction lifecycle callbacks are not called. The client code 
+    must clean up prototype-scoped objects and release expensive resources that the prototype bean(s) are holding. 
+    To get the Spring container to release resources held by prototype-scoped beans, try using a custom bean post-processor, 
+    which holds a reference to beans that Spring Framework 3.1 Reference Documentation 65 need to be cleaned up.
+    
+    If you do not use Spring's Web Containers [i.e. Struts, JSF, Tapestry, and etcetera], you must configure the following within 
+    the web.xml.
+    DispatcherServlet, RequestContextListener and RequestContextFilter all do exactly the same thing, namely bind the HTTP request 
+    object to the Thread that is servicing that request. This makes beans that are request- and session-scoped available further down the call chain.
+    <listener>
+        <listener-class>
+            org.springframework.web.context.request.RequestContextListener
+        </listener-class>
+    </listener>
+    
+    To create such a proxy, you insert a child <aop:scoped-proxy/> element into a scoped bean definition... Why do definitions of beans scoped at the request, 
+    session, globalSession and custom-scope levels require the <aop:scoped-proxy/> element? ... This is not the behavior you want when injecting a shorter-lived 
+    scoped bean into a longer-lived scoped bean, for example injecting an HTTP Session-scoped collaborating bean as a dependency into singleton bean. 
+    Rather, you need a single userManager object, and for the lifetime of an HTTP Session, you need a userPreferences object that is specific to said 
+    HTTP Session. Thus the container creates an object that exposes the exact same public interface as the UserPreferences class (ideally an object that 
+    is a UserPreferences instance) which can fetch the real UserPreferences object from the scoping mechanism (HTTP request, Session, etc.)...
+    Note: CGLIB proxies only intercept public method calls! Do not call non-public methods on such a proxy; they will not be delegated to the scoped target object.
+    
+    Please note that "classpath*:" when combined with Ant-style patterns will only work reliably with at least one root directory before the pattern starts, 
+    unless the actual target files reside in the file system. This means that a pattern like "classpath*:*.xml" will not retrieve files from the root of jar files but
+    rather only from the root of expanded directories. This originates from a limitation in the JDK's ClassLoader.getResources() method which only returns 
+    file system locations for a passed-in empty string (indicating potential roots to search).
+    
+    Additionally, Java's standard JavaBeans PropertyEditor lookup mechanism allows a PropertyEditor for a class simply to be named appropriately and placed in the same 
+    package as the class it provides support for, to be found automatically.
+    
+     -->
+    
+    <!-- 
+    <context:annotation-config/> only looks for annotations on beans in the same application context in which it is defined. This means that, if you put
+    <context:annotation-config/> in a WebApplicationContext for a DispatcherServlet, it only checks for @Autowired beans in your controllers, and not
+    your services.
+    
+    Furthermore, the AutowiredAnnotationBeanPostProcessor and CommonAnnotationBeanPostProcessor are both included implicitly when you use the 
+    component-scan element. That means that the two components are autodetected and wired together - all without any bean configuration metadata provided in XML.
+     -->
+    <context:annotation-config />
+    <context:property-placeholder location="classpath:springMVC-servlet.properties" />
+    
+    <!-- 
+    <bean id="applicationProps" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="classpath:application.properties"/>
+    </bean>
+     -->
+    
+    <util:properties id="applicationProps" location="classpath:application.properties"/>
+    
+    <!-- 
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="mediaTypes">
+            <map>
+                <entry key="atom" value="application/atom+xml"/>
+                <entry key="html" value="text/html"/>
+                <entry key="json" value="application/json"/>
+            </map>
+        </property>
+        <property name="viewResolvers">
+            <list>
+                <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
+                <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                    <property name="prefix" value="/WEB-INF/jsp/"/>
+                    <property name="suffix" value=".jsp"/>
+                </bean>
+            </list>
+        </property>
+        <property name="defaultViews">
+            <list>
+                <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+            </list>
+        </property>
+    </bean>
+    <bean id="content" class="com.springsource.samples.rest.SampleContentAtomView"/>
+    
+    In the above configuration, if a request is made with an .html extension, the view resolver looks for a view that matches the text/html media type. 
+    The InternalResourceViewResolver provides the matching view for text/html. If the request is made with the file extension .atom, the view resolver 
+    looks for a view that matches the application/atom+xml media type. This view is provided by the BeanNameViewResolver that maps to the
+    SampleContentAtomView if the view name returned is content. If the request is made with the file extension .json, the MappingJacksonJsonView 
+    instance from the DefaultViews list will be selected regardless of the view name. Alternatively, client requests can be made without a 
+    file extension but with the Accept header set to the preferred media-type, and the same resolution of request to views would occur.
+    
+     -->
+    
+    <!--
+    Following will require commons-fileupload.jar and the below will use the File uploads from Servlet 3.0. Don't forget to set 
+    enctype="multipart/form-data" on the client side for the form element and MultipartFile or Part[for Servlet 3.0] type on the server side.
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="100000"/>
+    </bean>
+     -->
+    
+    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+    </bean>
+    
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>com/googlecode/jihoonPlaygroundArena/examples/generic/nls/Cassandra</value>
+                <value>com/googlecode/jihoonPlaygroundArena/examples/generic/nls/General</value>
+                <value>com/googlecode/jihoonPlaygroundArena/examples/generic/nls/Hadoop</value>
+                <value>com/googlecode/jihoonPlaygroundArena/examples/generic/nls/MongoDB</value>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+        <property name="basename" value="view"/>
+    </bean>
+    
+    <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath" value="/WEB-INF/spring/velocity/"/>
+    </bean>
+    
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/spring/tiles/defs/general.xml</value>
+			</list>
+		</property>
+	</bean>
+    
+    <!--
+    View resolvers can also be configured with ResourceBundles or XML files. If you need
+    different view resolving based on Locale, you have to use the resource bundle resolver.
+    
+    In order to access the beans, one needs to utilize Spring's bind feature #springBind( "command.name" )
+    
+    The optional form of the macro called #springBindEscaped / <@spring.bindEscaped> takes a second argument 
+    and explicitly specifies whether HTML escaping should be used in the status error messages or values. 
+    Set to true or false as required.
+    
+    Table 17.1 includes additional macros for convenience
+    
+    <bean id="velocityResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+        <property name="cache" value="true"/>
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".vm"/>
+    </bean>
+    -->
+    
+    <!-- 
+    Avoid this methodology of using p namespace, placed only for mere documentation and similar capability exists for constructor-args
+    As a best practice, we strongly encourage placing your JSP files in a directory under the 'WEB-INF' directory, so there can be no 
+    direct access by clients.
+    
+    Note With a ResourceBundleViewResolver you can mix different types of views using only one resolver.
+    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+        p:viewClass="org.springframework.web.servlet.view.JstlView" 
+        p:prefix="/WEB-INF/spring/jsp/" 
+        p:suffix=".jsp" />
+     -->
+    
+    <!-- 
+    <bean id="defaultPathMethodNameResolverClass" class="org.springframework.web.servlet.mvc.multiaction.InternalPathMethodNameResolver">
+        <property name="suffix" value="Handler" />
+    </bean>
+     -->
+    
+    <context:component-scan base-package="com.googlecode.jihoonPlaygroundArena.examples.generic.controller"/>
+    <context:component-scan base-package="com.googlecode.jihoonPlaygroundArena.examples.generic.etcetera"/>
+    
+    <!-- Various Controllers -->
+    <bean id="hadoopController" class="com.googlecode.jihoonPlaygroundArena.examples.generic.controller.HadoopController" scope="session">
+    	<!-- Keeping one configuration here for reference, others will be using annotation
+    	<property name="taskRunner" ref="hadoopSimple" />
+    	 -->
+    </bean>
+    <bean id="mySQLController" class="com.googlecode.jihoonPlaygroundArena.examples.generic.controller.MySQLController" scope="session">
+    </bean>
+    <bean id="mongoDBController" class="com.googlecode.jihoonPlaygroundArena.examples.generic.controller.MongoDBController" scope="session">
+    </bean>
+    <bean id="cassandraController" class="com.googlecode.jihoonPlaygroundArena.examples.generic.controller.CassandraController" scope="session">
+    </bean>
+    <bean id="generalController" class="com.googlecode.jihoonPlaygroundArena.examples.generic.controller.GeneralController" scope="session">
+    </bean>
+    
+    <!-- TaskRunners for various components -->
+    <!-- 
+    <bean id="hadoopSimple" class="com.googlecode.jihoonPlaygroundArena.shared.tasks.HadoopTaskRunner" init-method="init" destroy-method="destroy" lazy-init="true">
+    </bean>
+     -->
+    
+    <!-- 
+    Need to provide the following parameter to the VM when using Tomcat
+    -XX:+CMSClassUnloadingEnabled -XX:+CMSPermGenSweepingEnabled -XX:MaxPermSize=512M 
+     -->
+    <bean id="mySQLSimple" class="com.googlecode.jihoonPlaygroundArena.shared.tasks.MySQLTaskRunner" init-method="init" destroy-method="destroy" lazy-init="true">
+        
+        <property name="initCommands">
+            <map>
+                <entry key="C:\Program Files\MySQL\mysql-5.5.20-win32\bin\mysqld">
+                    <set></set>
+                </entry>
+            </map>
+        </property>
+        
+        <property name="destroyCommands">
+            <map>
+                <entry key="C:\Program Files\MySQL\mysql-5.5.20-win32\bin\mysqladmin">
+                    <set>
+                        <value>-u</value>
+                        <value>mySQLRunner</value>
+                        <value>shutdown</value>
+                        <value>-pjpaExample</value>
+                    </set>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    
+    <bean id="mongoDBSimple" class="com.googlecode.jihoonPlaygroundArena.shared.tasks.MongoDBTaskRunner" init-method="init" destroy-method="destroy" lazy-init="true">
+        
+        <property name="dBCollections">
+            <map>
+                <entry key="${mongoDBName}">
+                    <map>
+                        <entry key="com.googlecode.jihoonPlaygroundArena.db.nosql.mongodb.beans.AddressDocument">
+                            <set>
+                                <value>state</value>
+                            </set>
+                        </entry>
+                        <entry key="com.googlecode.jihoonPlaygroundArena.db.nosql.mongodb.beans.BankAccountDocument">
+                            <set>
+                                <value>bankName</value>
+                            </set>
+                        </entry>
+                        <entry key="com.googlecode.jihoonPlaygroundArena.db.nosql.mongodb.beans.CategoryDocument">
+                            <set>
+                                <value>name</value>
+                            </set>
+                        </entry>
+                        <entry key="com.googlecode.jihoonPlaygroundArena.db.nosql.mongodb.beans.CreditCardDocument">
+                            <set>
+                                <value>type</value>
+                            </set>
+                        </entry>
+                        <entry key="com.googlecode.jihoonPlaygroundArena.db.nosql.mongodb.beans.ImageDocument">
+                            <set></set>
+                        </entry>
+                        <entry key="com.googlecode.jihoonPlaygroundArena.db.nosql.mongodb.beans.ItemDocument">
+                            <set>
+                                <value>price</value>
+                                <value>shippingFee</value>
+                            </set>
+                        </entry>
+                        <entry key="com.googlecode.jihoonPlaygroundArena.db.nosql.mongodb.beans.ReceiptDocument">
+                            <set></set>
+                        </entry>
+                        <entry key="com.googlecode.jihoonPlaygroundArena.db.nosql.mongodb.beans.ReviewDocument">
+                            <set>
+                                <value>rating</value>
+                            </set>
+                        </entry>
+                        <entry key="com.googlecode.jihoonPlaygroundArena.db.nosql.mongodb.beans.UserDocument">
+                            <set>
+                                <value>userName</value>
+                            </set>
+                        </entry>
+                    </map>
+                </entry>
+            </map>
+            
+        </property>
+        
+        <property name="authenticationConfig">
+            <map>
+                <entry key="${mongoDBName}">
+                    <map>
+                        <entry key="userId">
+                            <value>passw0rd</value>
+                        </entry>
+                    </map>
+                </entry>
+            </map>
+        </property>
+        
+    </bean>
+    
+    <bean id="cassandraSimple" class="com.googlecode.jihoonPlaygroundArena.shared.tasks.CassandraTaskRunner" init-method="init" destroy-method="destroy" lazy-init="true">
+    </bean>
+    
+</beans>

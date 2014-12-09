@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	
+	<definition name="mySQLTileWelcome" template="/WEB-INF/spring/tiles/mySQL/welcome.jsp">
+	    <put-attribute name="title" value="MySQL Main" />
+	    <put-attribute name="generalPageUrlDefinitions" value="/WEB-INF/spring/tiles/pageFrag/general/pageUrlDefinitions.jsp" />
+	</definition>
+	
+	<definition name="mySQLTileViewUserInfo" template="/WEB-INF/spring/tiles/mySQL/viewUserInfo.jsp" extends="mySQLTileWelcome">
+	    <put-attribute name="title" value="MySQL View User Info" />
+	    <put-attribute name="mysql.main" value="MySQL Main" />
+	    <put-attribute name="mysql.userid.info" expression="UserId ${requestScope.USER_ID} info"/>
+	</definition>
+	
+	<definition name="user.general" template="/WEB-INF/spring/tiles/pageFrag/user/general.jsp">
+	</definition>
+	
+	<definition name="address.general" template="/WEB-INF/spring/tiles/pageFrag/address/general.jsp">
+	   <put-attribute name="statesOptions" value="/WEB-INF/spring/tiles/pageFrag/general/statesOptions.jsp" />
+	</definition>
+	
+	<definition name="bankAccount.general" template="/WEB-INF/spring/tiles/pageFrag/account/bankAccount/general.jsp">
+	</definition>
+	
+	<definition name="creditCard.general" template="/WEB-INF/spring/tiles/pageFrag/account/creditCard/general.jsp">
+	</definition>
+	
+</tiles-definitions>

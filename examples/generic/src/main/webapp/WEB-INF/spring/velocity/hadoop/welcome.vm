@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang=en>
+<!--
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+//-->
+    <head>
+        <meta charset="utf-8">
+        <title>#springMessage("H.MAIN")</title>
+        
+        #set( $applicationVersion = ${env.getProperty("application.version")} )
+        #set( $mainJsUrl = "/controller/js-${applicationVersion}/hadoopMain.js" )
+        #set( $requireJQueryJsUrl = "/controller/js-${applicationVersion}/require-jquery.js" )
+        #set( $allCssUrl = "/controller/css-${applicationVersion}/all.css" )
+        
+        <link href="#springUrl(${allCssUrl})" rel="stylesheet"></link>
+    </head>
+    
+    <body>
+        <div class="clear">
+            <nav class="clear links genericBorderRadius genericBoxShadow">
+                <div class="linksHeader" id="toTransform">#springMessage("PAGE_LINKS")</div>
+                <ul>
+                    <li><a data-example-link href="#springUrl('/index.html')">#springMessage("MAIN_INDEX")</a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <section class="hProduct genericBorderRadius genericBoxShadow" itemscope itemtype="http://www.data-vocabulary.org/Product/">
+	            <details>
+	                <summary class="panelHeader" itemprop="name">#springMessage("SCREENSHOTS")</summary>
+	                <article class="screenShotArticle">
+	                
+	                    <div>
+	                        <figure>
+	                            <img data-img-summary="Hadoop Example" itemprop="image" src="" alt="HadoopExample" />
+	                            <figcaption>#springMessage("CERTAIN_TASK_EXAMPLE")</figcaption>
+	                        </figure>
+	                    </div>
+	                </article>
+	            </details>
+        	</section>
+        </div>
+        
+        <div class="clear">
+	        <section class="genericBorderRadius genericBoxShadow">
+	            <details>
+	                <summary class="panelHeader">#springMessage("TASK_CONTENT")</summary>
+	            </details>
+	        </section>
+	    </div>
+        
+        <script type="text/javascript" data-main="#springUrl(${mainJsUrl})" src="#springUrl(${requireJQueryJsUrl})"></script>
+    </body>
+</html>

@@ -1,0 +1,375 @@
+@CHARSET "UTF-8";
+
+/*
+ * Since CSS are resolved right to left, technically below are not optimal constructs as 
+ * the last entry should be class or id selectors; however it's just for playing around
+ */
+
+#fieldSetLegend {
+    color: #6495ED;
+    font-size: 18px;
+    -moz-box-shadow: 0.45em 0.25em 0.25em gray;
+    -webkit-box-shadow: 0.45em 0.25em 0.25em gray;
+    box-shadow: 0.45em 0.25em 0.25em gray;
+    
+    -moz-transform: rotate(3deg) skewX(5deg);
+    -webkit-transform: rotate(3deg) skewX(5deg);
+    -o-transform: rotate(3deg) skewX(5deg);
+    -ms-transform: rotate(3deg) skewX(5deg);
+    transform: rotate(3deg) skewX(5deg);
+    
+    -moz-text-shadow: 0.33em 0.25em 0.1em gray;
+    -webkit-text-shadow: 0.33em 0.25em 0.1em gray;
+    text-shadow: 0.33em 0.25em 0.1em gray;
+}
+
+#toTransform {
+    -moz-transition: -moz-transform 1s ease-in-out 0.5s;
+    -webkit-transition: -webkit-transform 1s ease-in-out 0.5s;
+    transition: transform 1s ease-in-out 0.5s, background-color 2s cubic-bezier(0.6, 0.1, 0.15, 0.8) -250ms;
+}
+
+#toTransform:hover {
+    background-color: #FFFFE0;
+    -moz-transform: rotate(10deg);
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+}
+
+.blackWhiteTextShadow {
+    -moz-text-shadow: 
+    0 -2px 3px #FFF,
+    0 -4px 3px #AAA,
+    0 -6px 6px #666,
+    0 -8px 9px #000;
+    -webkit-text-shadow: 
+    0 -2px 3px #FFF,
+    0 -4px 3px #AAA,
+    0 -6px 6px #666,
+    0 -8px 9px #000;
+    text-shadow: 
+    0 -2px 3px #FFF,
+    0 -4px 3px #AAA,
+    0 -6px 6px #666,
+    0 -8px 9px #000;
+}
+
+.borderColorsFade {
+    border-width: 6px;
+    
+    -moz-border-top-colors: #222 #444 #666 #888 #AAA #CCC;
+    -webkit-border-top-colors: #222 #444 #666 #888 #AAA #CCC;
+    border-top-colors: #222 #444 #666 #888 #AAA #CCC;
+    
+    -moz-border-left-colors: #222 #444 #666 #888 #AAA #CCC;
+    -webkit-border-left-colors: #222 #444 #666 #888 #AAA #CCC;
+    border-left-colors: #222 #444 #666 #888 #AAA #CCC;
+    
+    -moz-border-bottom-colors: #222 #444 #666 #888 #AAA #CCC;
+    -webkit-border-bottom-colors: #222 #444 #666 #888 #AAA #CCC;
+    border-bottom-colors: #222 #444 #666 #888 #AAA #CCC;
+    
+    -moz-border-right-colors: #222 #444 #666 #888 #AAA #CCC;
+    -webkit-border-right-colors: #222 #444 #666 #888 #AAA #CCC;
+    border-right-colors: #222 #444 #666 #888 #AAA #CCC;
+}
+
+.columns {
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+    column-count: 3;
+    
+    -moz-column-gap: 2em;
+    -webkit-column-gap: 2em;
+    column-gap: 2em;
+    
+    -moz-column-rule: 2px solid #ccc;
+    -webkit-column-rule: 2px solid #ccc;
+    column-rule: 2px solid #ccc;
+    
+    -moz-column-width: 13em;
+    -webkit-column-width: 13em;
+    column-width: 13em;
+    padding: 5px;
+    text-align: center;
+}
+
+.columnsBreakBefore {
+    -moz-break-before: column;
+    -webkit-break-before: column;
+    break-before: column;
+}
+
+.contentDisplayContainer { 
+	background-color: white;
+	
+	border: 3px solid #F8F8F8;
+	
+    -webkit-box-shadow: 2px 2px 6px #949494;
+    -moz-box-shadow: 2px 2px 6px #949494;
+    box-shadow: 2px 2px 6px #949494;
+    
+    z-index: 9999;
+}
+
+.contentDisplayContainer .radialGradient { 
+    background-image: -moz-radial-gradient(center center 0deg, circle closest-side, white, white 25%, black 50%, white 75%, transparent);
+    background-image: -webkit-gradient(radial, center center 0deg, 0, 40% 50%, 50, from(white), color-stop(25%, white), color-stop(50%, black), color-stop(75%, white), to(transparent));
+}
+
+.contentDisplayContainer .contentHeaderContainer { 
+    background: -moz-linear-gradient(bottom, #CCCCFF, #660033);
+    background: -webkit-gradient(linear, left top, left bottom, from(#660033), to(#CCCCFF));
+    background: -webkit-linear-gradient(bottom, #CCCCFF, #660033);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#660033', endColorstr='#CCCCFF')";
+}
+
+.contentDisplayContainer .contentContainer { 
+	background-image: -moz-radial-gradient(center center 0deg, circle farthest-corner, #FFFFCC 0%, #FFFF00 100%, transparent);
+    background-image: -webkit-gradient(radial, center center 0deg, 0, 40% 50%, 50, from(#FFFFCC), to(#FFFF00));
+}
+
+.contentContainer .content { 
+	background: -moz-linear-gradient(bottom, #FFFFFF, #66FF66);
+    background: -webkit-gradient(linear, left top, left bottom, from(#66FF66), to(#FFFFFF));
+    background: -webkit-linear-gradient(bottom, #FFFFFF, #66FF66);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#66FF66', endColorstr='#FFFFFF')";
+    
+    border-color: #66CCFF;
+    border-style: double dotted;
+    
+    color: #F08080;
+    font-weight: bold;
+    
+    height: 20px;
+}
+
+.contentResize {
+    -moz-resize: both;
+    -webkit-resize: both;
+    resize: both;
+}
+
+.css3Button {
+    background: -moz-linear-gradient(bottom, #CC0099, #CCCCFF);
+    background: -webkit-gradient(linear, left top, left bottom, from(#CCCCFF), to(#CC0099));
+    background: -webkit-linear-gradient(bottom, #CC0099, #CCCCFF);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#CCCCFF', endColorstr='#CC0099')";
+    border: 2px solid #CC99FF;
+    
+    -webkit-box-shadow: 2px 2px 6px rgba(195, 210, 100, 0.25);
+    -moz-box-shadow: 2px 2px 6px rgba(195, 210, 100, 0.25);
+    box-shadow: 2px 2px 6px rgba(195, 210, 100, 0.25);
+    color: #FFFFFF;
+    font-weight: bold;
+    height: 24px;
+    padding: 2px;
+}
+
+.genericBorderRadius {
+    -moz-border-radius: 4px / 2px;
+    webkit-border-radius: 4px / 2px;
+    border-radius: 4px / 2px;
+}
+
+.genericBoxShadow {
+    -moz-box-shadow: -1px 2px 4px #CCCCCC;
+    -webkit-box-shadow: -1px 2px 4px #CCCCCC;
+    box-shadow: -1px 2px 4px #CCCCCC;
+}
+
+.letterPress {
+    color: #333;
+    -moz-text-shadow: 0 1px 0 #777, 0 -1px 0 #000;
+    -webkit-text-shadow: 0 1px 0 #777, 0 -1px 0 #000;
+    text-shadow: 0 1px 0 #777, 0 -1px 0 #000;
+}
+
+.osButton {
+    -moz-appearance: button;
+    -webkit-appearance: button;
+    appearance: button;
+}
+
+.sectionDescription {
+    color: #708090;
+    font: bold 14px/2.5 verdana;
+    text-align: center;
+    text-decoration: underline;
+    width: 50%;
+    -moz-text-shadow: 0.33em 0.25em 0.1em orange;
+    -webkit-text-shadow: 0.33em 0.25em 0.1em orange;
+    text-shadow: 0.33em 0.25em 0.1em orange;
+    
+    -moz-transform: skewY(-3deg) scale(1.5);
+    -webkit-transform: skewY(-3deg) scale(1.5);
+    -o-transform: skewY(-3deg) scale(1.5);
+    -ms-transform: skewY(-3deg) scale(1.5);
+    transform: skewY(-3deg) scale(1.5);
+}
+
+.sphericalGradient {
+    background-image: -moz-radial-gradient(40% 50%, circle closest-side, white, white 25%, black 50%, white 75%, transparent);
+    background-image: -webkit-gradient(radial, 40% 50%, 0, 40% 50%, 50, from(white), color-stop(25%, white), color-stop(50%, black), color-stop(75%, white), to(transparent));
+}
+
+.textOverFlow {
+    -moz-text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.whiteBlackTextShadow {
+    color: #FFF;
+    
+    -moz-text-shadow: 
+    0 2px rgba(0, 0, 0, 0.4),
+    0 4px rgba(0, 0, 0, 0.4),
+    0 6px rgba(0, 0, 0, 0.4),
+    0 8px 0 rgba(0, 0, 0, 0.4);
+    -webkit-text-shadow: 
+    0 2px rgba(0, 0, 0, 0.4),
+    0 4px rgba(0, 0, 0, 0.4),
+    0 6px rgba(0, 0, 0, 0.4),
+    0 8px 0 rgba(0, 0, 0, 0.4);
+    text-shadow: 
+    0 2px rgba(0, 0, 0, 0.4),
+    0 4px rgba(0, 0, 0, 0.4),
+    0 6px rgba(0, 0, 0, 0.4),
+    0 8px 0 rgba(0, 0, 0, 0.4);
+}
+
+article, aside, canvas, details, embed, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+    display: block;
+}
+command, datalist, keygen, mark, meter, progress, rp, rt, ruby, time, wbr {
+    display: inline;
+}
+
+section {
+    background-color: #FFFFFF;
+    border: 3px solid #3C78B5;
+    float: right;
+    margin: 0 10px 10px;
+    width: 85%;
+}
+
+canvas {
+    border: 3px solid #3C78B5;
+}
+
+figcaption {
+    font-size: 10px;
+    text-align: center;
+}
+
+footer {
+    clear: both;
+}
+
+header > div > div {
+    display: inline-block;
+}
+
+input[type="search"] {
+    -webkit-appearance: textfield;
+}
+
+input[type=range]::before {
+    content: attr(min);
+}
+
+input[type=range]::after {
+    content: attr(max);
+}
+
+input, progress {
+    width: 6em;
+}
+
+nav {
+    float: left;
+    width: 10%;
+}
+
+@media only all and (min-width: 500px) and (max-width: 799px) {
+    .columns {
+        -moz-column-count: 3;
+        -webkit-column-count: 3;
+        column-count: 3;
+        
+        -moz-column-gap: 2em;
+        -webkit-column-gap: 2em;
+        column-gap: 2em;
+        
+        -moz-column-rule: 1px solid #ccc;
+        -webkit-column-rule: 1px solid #ccc;
+        column-rule: 1px solid #ccc;
+        
+        -moz-column-width: 10em;
+        -webkit-column-width: 10em;
+        column-width: 10em;
+        padding: 3px;
+        text-align: center;
+    }
+    
+}
+
+@keyframes "expand" {
+    from { border-width: 10px; }
+    50% { border-width: 1px; }
+    to {
+       border-width: 1px;
+       height: 120px;
+       width: 150px;
+    }
+    
+}
+
+.animationExpand {
+    animation: "expand" 6s ease-in 2s infinite alternate;
+}
+.animationExpand:hover {
+    animation-play-state: paused;
+}
+
+/* First proposal */
+@variables {
+    exampleColor: #F00;
+    exampleLength: 10em;
+}
+
+.firstProposal {
+    background-color: var(exampleColor);
+    width: var(exampleLength);
+}
+
+/* Second proposal */
+@define values {
+    exampleColor2: #F00;
+    exampleLength2: 10em;
+}
+
+.secondProposal {
+    background-color: `exampleColor2;
+    width: `exampleLength;
+}
+
+@define style-sets {
+    exampleSet {
+       background-color: #F00;
+       width: 10em;
+    }
+}
+
+.secondProposalSS {
+    `exampleSet;
+}
+
+@define selectors {
+    exampleSelector: ul ul li;
+}
+
+`exampleSelector div {
+    border: 3em;
+}

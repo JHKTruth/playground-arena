@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+                        http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+    version="1.0">
+    
+    <!-- JPA is an acronym for Jihoon PlayGround Arena and Java Persistence API lol-->
+    <persistence-unit name="jpa">
+        <!-- Provider needed only if multiple JPA implementation is used -->
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        
+        <mapping-file>META-INF/namedQueries.xml</mapping-file>
+        
+        <!-- 
+            Automatic detection of annotated classes and XML mapping files is usually 
+            only available in a Java EE application server, according to EJB 3.0 
+            specification, but Hibernate also implements it in plain Java SE.
+         -->
+        <properties>
+            <property name="hibernate.ejb.cfgfile" value="hibernate.cfg.xml" />
+        </properties>
+        
+    </persistence-unit>
+    
+</persistence>
