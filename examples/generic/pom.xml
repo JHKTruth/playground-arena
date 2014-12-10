@@ -1,198 +1,197 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  
-  <parent>
-    <groupId>com.jhkt.playground-arena</groupId>
-    <artifactId>examples-project</artifactId>
-    <version>${jhkt-playground-arena.version}</version>
-  </parent>
-  
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.jhkt.playground-arena.examples</groupId>
-  <artifactId>jpa-generic-examples</artifactId>
-  <packaging>war</packaging>
-  <name>JHKTruth Playground Arena Generic Examples</name>
-  <description>JHKTruth Playground Arena Generic Example WAR project</description>
-  <licenses>
-    <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-  
-  <scm>
-    <developerConnection>scm:git:http://github.com/JHKTruth/playground-arena/examples/generic</developerConnection>
-  </scm>
-  
-  <profiles>
-    <profile>
-	  <id>timestampDoNotAppend</id>
-	  <activation>
-        <property>
-          <name>!timestampAppend</name>
-        </property>
-      </activation>
-	  <build>
-	    <finalName>${artifactId}</finalName>
-	  </build>
-	</profile>
-	
-    <profile>
-	  <id>timestampAppend</id>
-	  <activation>
-        <property>
-          <name>timestampAppend</name>
-		  <value>true</value>
-        </property>
-      </activation>
-	  <build>
-	    <finalName>${project.artifactId}-${project.version}-${timestamp}</finalName>
-	  </build>
-	</profile>
-	
-  </profiles>
-  
-  <dependencies>
-	
-	<dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-    </dependency>
-    
-	<dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>jstl</artifactId>
-	</dependency>
-	
-    <dependency>
-      <groupId>javax.servlet.jsp</groupId>
-      <artifactId>javax.servlet.jsp-api</artifactId>
-	  <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.el</groupId>
-      <artifactId>javax.el-api</artifactId>
-	  <scope>provided</scope>
-    </dependency>
-	
-	<dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>servlet-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
-	
-	<dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-core</artifactId>
-    </dependency>
-	<dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-beans</artifactId>
-    </dependency>
-	<dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context</artifactId>
-	  <exclusions>
-        <exclusion>
-          <groupId>commons-logging</groupId>
-          <artifactId>commons-logging</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-	<dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-web</artifactId>
-    </dependency>
-	<dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-webmvc</artifactId>
-    </dependency>
-	<dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-expression</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-mapper-asl</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>org.apache.velocity</groupId>
-      <artifactId>velocity</artifactId>
-    </dependency>
-	<dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>org.apache.tiles</groupId>
-      <artifactId>tiles-extras</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>com.lowagie</groupId>
-      <artifactId>itext</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>com.kenai.nbpwr</groupId>
-      <artifactId>com-sun-syndication-feed</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>javax.inject</groupId>
-      <artifactId>javax.inject</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>jcl-over-slf4j</artifactId>
-    </dependency>
-	<dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-    </dependency>
-	<dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>log4j-over-slf4j</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>com.jhkt.playground-arena</groupId>
-      <artifactId>jpa-shared</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>com.jhkt.playground-arena.db.nosql</groupId>
-      <artifactId>jpa-mongodb</artifactId>
-      <version>${jhkt-playground-arena.version}</version>
-    </dependency>
-	
-	<dependency>
-      <groupId>com.jhkt.playground-arena.db.sql</groupId>
-      <artifactId>jpa-mysql</artifactId>
-      <version>${jhkt-playground-arena.version}</version>
-    </dependency>
-	
-	<dependency>
-      <groupId>com.jhkt.playground-arena.db.nosql</groupId>
-      <artifactId>jpa-cassandra</artifactId>
-      <version>${jhkt-playground-arena.version}</version> <!-- shouldn't need this so investigate why blowing up with latest maven -->
-    </dependency>
-	
-	<!--
-	
-	<dependency>
-      <groupId>com.googlecode.jihoon-playground-arena</groupId>
-      <artifactId>jpa-hadoop</artifactId>
-    </dependency>
-	
-	-->
-  </dependencies>
-  
-  <build>
+
+    <parent>
+        <groupId>com.jhkt.playground-arena</groupId>
+        <artifactId>examples-project</artifactId>
+        <version>${jhkt-playground-arena.version}</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.jhkt.playground-arena.examples</groupId>
+    <artifactId>jpa-generic-examples</artifactId>
+    <packaging>war</packaging>
+    <name>JHKTruth Playground Arena Generic Examples</name>
+    <description>JHKTruth Playground Arena Generic Example WAR project</description>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git://github.com/JHKTruth/playground-arena.git</connection>
+    </scm>
+
+    <profiles>
+        <profile>
+            <id>timestampDoNotAppend</id>
+            <activation>
+                <property>
+                    <name>!timestampAppend</name>
+                </property>
+            </activation>
+            <build>
+                <finalName>${artifactId}</finalName>
+            </build>
+        </profile>
+
+        <profile>
+            <id>timestampAppend</id>
+            <activation>
+                <property>
+                    <name>timestampAppend</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <finalName>${project.artifactId}-${project.version}-${timestamp}</finalName>
+            </build>
+        </profile>
+
+    </profiles>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-extras</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.kenai.nbpwr</groupId>
+            <artifactId>com-sun-syndication-feed</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jhkt.playground-arena</groupId>
+            <artifactId>jpa-shared</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jhkt.playground-arena.db.nosql</groupId>
+            <artifactId>jpa-mongodb</artifactId>
+            <version>${jhkt-playground-arena.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jhkt.playground-arena.db.sql</groupId>
+            <artifactId>jpa-mysql</artifactId>
+            <version>${jhkt-playground-arena.version}</version> <!-- shouldn't need this so investigate why blowing up with latest maven -->
+        </dependency>
+
+        <dependency>
+            <groupId>com.jhkt.playground-arena.db.nosql</groupId>
+            <artifactId>jpa-cassandra</artifactId>
+        </dependency>
+
+        <!--
+
+        <dependency>
+            <groupId>com.googlecode.jihoon-playground-arena</groupId>
+            <artifactId>jpa-hadoop</artifactId>
+        </dependency>
+
+        -->
+    </dependencies>
+
+<build>
     <plugins>
 	  <plugin>
 	    <artifactId>maven-antrun-plugin</artifactId>

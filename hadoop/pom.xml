@@ -1,76 +1,75 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.jhkt.playground-arena</groupId>
+        <artifactId>main-project</artifactId>
+        <version>${jhkt-playground-arena.version}</version>
+    </parent>
+
     <groupId>com.jhkt.playground-arena</groupId>
-    <artifactId>main-project</artifactId>
-    <version>${jhkt-playground-arena.version}</version>
-  </parent>
-  
-  <groupId>com.jhkt.playground-arena</groupId>
-  <artifactId>jpa-hadoop</artifactId>
-  <packaging>jar</packaging>
-  <name>JHKTruth Playground Arena Hadoop Project</name>
-  <url>https://github.com/JHKTruth/playground-arena</url>
-  <description>
-    JHKTruth Playground Arena Hadoop Project will contain playground code for the Hadoop project.
-  </description>
-  
-  <scm>
-    <developerConnection>scm:git:http://github.com/JHKTruth/playground-arena/hadoop</developerConnection>
-  </scm>
-  
-  <dependencies>
-    
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-	</dependency>
-	
-	<dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>log4j-over-slf4j</artifactId>
-	</dependency>
-	
-	<dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>com.jhkt.playground-arena</groupId>
-      <artifactId>jpa-shared</artifactId>
-    </dependency>
-    
-	<dependency>
-      <groupId>org.apache.hadoop</groupId>
-      <artifactId>hadoop-core</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>org.apache.hadoop</groupId>
-      <artifactId>hadoop-streaming</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>org.apache.hadoop</groupId>
-      <artifactId>hadoop-tools</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>org.apache.hadoop</groupId>
-      <artifactId>hadoop-common</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>org.apache.hadoop</groupId>
-      <artifactId>hadoop-hdfs</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>org.apache.hadoop</groupId>
-      <artifactId>hadoop-mapred</artifactId>
-    </dependency>
-	
-  </dependencies>
-  
+    <artifactId>jpa-hadoop</artifactId>
+    <packaging>jar</packaging>
+    <name>JHKTruth Playground Arena Hadoop Project</name>
+    <description>
+        JHKTruth Playground Arena Hadoop Project will contain playground code for the Hadoop project.
+    </description>
+
+    <scm>
+        <connection>scm:git:git://github.com/JHKTruth/playground-arena.git</connection>
+    </scm>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jhkt.playground-arena</groupId>
+            <artifactId>jpa-shared</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-streaming</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-tools</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-hdfs</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-mapred</artifactId>
+        </dependency>
+
+    </dependencies>
+
 </project>

@@ -121,10 +121,10 @@
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basenames">
             <list>
-                <value>com/googlecode/jihoonPlaygroundArena/examples/generic/nls/Cassandra</value>
-                <value>com/googlecode/jihoonPlaygroundArena/examples/generic/nls/General</value>
-                <value>com/googlecode/jihoonPlaygroundArena/examples/generic/nls/Hadoop</value>
-                <value>com/googlecode/jihoonPlaygroundArena/examples/generic/nls/MongoDB</value>
+                <value>com/jhkt/playgroundArena/examples/generic/nls/Cassandra</value>
+                <value>com/jhkt/playgroundArena/examples/generic/nls/General</value>
+                <value>com/jhkt/playgroundArena/examples/generic/nls/Hadoop</value>
+                <value>com/jhkt/playgroundArena/examples/generic/nls/MongoDB</value>
             </list>
         </property>
     </bean>
@@ -182,27 +182,27 @@
     </bean>
      -->
     
-    <context:component-scan base-package="com.googlecode.jihoonPlaygroundArena.examples.generic.controller"/>
-    <context:component-scan base-package="com.googlecode.jihoonPlaygroundArena.examples.generic.etcetera"/>
+    <context:component-scan base-package="com.jhkt.playgroundArena.examples.generic.controller"/>
+    <context:component-scan base-package="com.jhkt.playgroundArena.examples.generic.etcetera"/>
     
     <!-- Various Controllers -->
-    <bean id="hadoopController" class="com.googlecode.jihoonPlaygroundArena.examples.generic.controller.HadoopController" scope="session">
+    <bean id="hadoopController" class="com.jhkt.playgroundArena.examples.generic.controller.HadoopController" scope="session">
     	<!-- Keeping one configuration here for reference, others will be using annotation
     	<property name="taskRunner" ref="hadoopSimple" />
     	 -->
     </bean>
-    <bean id="mySQLController" class="com.googlecode.jihoonPlaygroundArena.examples.generic.controller.MySQLController" scope="session">
+    <bean id="mySQLController" class="com.jhkt.playgroundArena.examples.generic.controller.MySQLController" scope="session">
     </bean>
-    <bean id="mongoDBController" class="com.googlecode.jihoonPlaygroundArena.examples.generic.controller.MongoDBController" scope="session">
+    <bean id="mongoDBController" class="com.jhkt.playgroundArena.examples.generic.controller.MongoDBController" scope="session">
     </bean>
-    <bean id="cassandraController" class="com.googlecode.jihoonPlaygroundArena.examples.generic.controller.CassandraController" scope="session">
+    <bean id="cassandraController" class="com.jhkt.playgroundArena.examples.generic.controller.CassandraController" scope="session">
     </bean>
-    <bean id="generalController" class="com.googlecode.jihoonPlaygroundArena.examples.generic.controller.GeneralController" scope="session">
+    <bean id="generalController" class="com.jhkt.playgroundArena.examples.generic.controller.GeneralController" scope="session">
     </bean>
     
     <!-- TaskRunners for various components -->
     <!-- 
-    <bean id="hadoopSimple" class="com.googlecode.jihoonPlaygroundArena.shared.tasks.HadoopTaskRunner" init-method="init" destroy-method="destroy" lazy-init="true">
+    <bean id="hadoopSimple" class="com.jhkt.playgroundArena.shared.tasks.HadoopTaskRunner" init-method="init" destroy-method="destroy" lazy-init="true">
     </bean>
      -->
     
@@ -210,7 +210,7 @@
     Need to provide the following parameter to the VM when using Tomcat
     -XX:+CMSClassUnloadingEnabled -XX:+CMSPermGenSweepingEnabled -XX:MaxPermSize=512M 
      -->
-    <bean id="mySQLSimple" class="com.googlecode.jihoonPlaygroundArena.shared.tasks.MySQLTaskRunner" init-method="init" destroy-method="destroy" lazy-init="true">
+    <bean id="mySQLSimple" class="com.jhkt.playgroundArena.shared.tasks.MySQLTaskRunner" init-method="init" destroy-method="destroy" lazy-init="true">
         
         <property name="initCommands">
             <map>
@@ -234,50 +234,50 @@
         </property>
     </bean>
     
-    <bean id="mongoDBSimple" class="com.googlecode.jihoonPlaygroundArena.shared.tasks.MongoDBTaskRunner" init-method="init" destroy-method="destroy" lazy-init="true">
+    <bean id="mongoDBSimple" class="com.jhkt.playgroundArena.shared.tasks.MongoDBTaskRunner" init-method="init" destroy-method="destroy" lazy-init="true">
         
         <property name="dBCollections">
             <map>
                 <entry key="${mongoDBName}">
                     <map>
-                        <entry key="com.googlecode.jihoonPlaygroundArena.db.nosql.mongodb.beans.AddressDocument">
+                        <entry key="com.jhkt.playgroundArena.db.nosql.mongodb.beans.AddressDocument">
                             <set>
                                 <value>state</value>
                             </set>
                         </entry>
-                        <entry key="com.googlecode.jihoonPlaygroundArena.db.nosql.mongodb.beans.BankAccountDocument">
+                        <entry key="com.jhkt.playgroundArena.db.nosql.mongodb.beans.BankAccountDocument">
                             <set>
                                 <value>bankName</value>
                             </set>
                         </entry>
-                        <entry key="com.googlecode.jihoonPlaygroundArena.db.nosql.mongodb.beans.CategoryDocument">
+                        <entry key="com.jhkt.playgroundArena.db.nosql.mongodb.beans.CategoryDocument">
                             <set>
                                 <value>name</value>
                             </set>
                         </entry>
-                        <entry key="com.googlecode.jihoonPlaygroundArena.db.nosql.mongodb.beans.CreditCardDocument">
+                        <entry key="com.jhkt.playgroundArena.db.nosql.mongodb.beans.CreditCardDocument">
                             <set>
                                 <value>type</value>
                             </set>
                         </entry>
-                        <entry key="com.googlecode.jihoonPlaygroundArena.db.nosql.mongodb.beans.ImageDocument">
+                        <entry key="com.jhkt.playgroundArena.db.nosql.mongodb.beans.ImageDocument">
                             <set></set>
                         </entry>
-                        <entry key="com.googlecode.jihoonPlaygroundArena.db.nosql.mongodb.beans.ItemDocument">
+                        <entry key="com.jhkt.playgroundArena.db.nosql.mongodb.beans.ItemDocument">
                             <set>
                                 <value>price</value>
                                 <value>shippingFee</value>
                             </set>
                         </entry>
-                        <entry key="com.googlecode.jihoonPlaygroundArena.db.nosql.mongodb.beans.ReceiptDocument">
+                        <entry key="com.jhkt.playgroundArena.db.nosql.mongodb.beans.ReceiptDocument">
                             <set></set>
                         </entry>
-                        <entry key="com.googlecode.jihoonPlaygroundArena.db.nosql.mongodb.beans.ReviewDocument">
+                        <entry key="com.jhkt.playgroundArena.db.nosql.mongodb.beans.ReviewDocument">
                             <set>
                                 <value>rating</value>
                             </set>
                         </entry>
-                        <entry key="com.googlecode.jihoonPlaygroundArena.db.nosql.mongodb.beans.UserDocument">
+                        <entry key="com.jhkt.playgroundArena.db.nosql.mongodb.beans.UserDocument">
                             <set>
                                 <value>userName</value>
                             </set>
@@ -302,7 +302,7 @@
         
     </bean>
     
-    <bean id="cassandraSimple" class="com.googlecode.jihoonPlaygroundArena.shared.tasks.CassandraTaskRunner" init-method="init" destroy-method="destroy" lazy-init="true">
+    <bean id="cassandraSimple" class="com.jhkt.playgroundArena.shared.tasks.CassandraTaskRunner" init-method="init" destroy-method="destroy" lazy-init="true">
     </bean>
     
 </beans>

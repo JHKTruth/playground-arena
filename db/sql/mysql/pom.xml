@@ -1,83 +1,82 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.jhkt.playground-arena.db.sql</groupId>
+        <artifactId>sql-project</artifactId>
+        <version>${jhkt-playground-arena.version}</version>
+    </parent>
+
     <groupId>com.jhkt.playground-arena.db.sql</groupId>
-    <artifactId>sql-project</artifactId>
-    <version>${jhkt-playground-arena.version}</version>
-  </parent>
-  
-  <groupId>com.jhkt.playground-arena.db.sql</groupId>
-  <artifactId>jpa-mysql</artifactId>
-  <packaging>jar</packaging>
-  <name>JHKTruth Playground Arena DB MySQL Sql Project</name>
-  <url>https://github.com/JHKTruth/playground-arena</url>
-  <description>
-    JHKTruth Playground Arena DB MySQL Sql Project will contain playground code for MySQL.
-  </description>
-  
-  <scm>
-    <developerConnection>scm:git:http://github.com/JHKTruth/playground-arena/db/sql/mysql</developerConnection>
-  </scm>
-  
-  <dependencies>
-    
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>com.jhkt.playground-arena</groupId>
-      <artifactId>jpa-shared</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-    </dependency>
-	
-	<!-- Hibernate uses slf4j for logging -->
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-	</dependency>
-	
-	<dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>log4j-over-slf4j</artifactId>
-	</dependency>
-	
-	<dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-mapper-asl</artifactId>
-    </dependency>
-	
-	<!-- Hibernate gives you a choice of bytecode providers between cglib and javassist -->
-    <dependency>
-      <groupId>org.javassist</groupId>
-      <artifactId>javassist</artifactId>
-	</dependency>
-	
-	<dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-annotations</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-c3p0</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-entitymanager</artifactId>
-    </dependency>
-	
-  </dependencies>
-  
+    <artifactId>jpa-mysql</artifactId>
+    <packaging>jar</packaging>
+    <name>JHKTruth Playground Arena DB MySQL Sql Project</name>
+    <description>
+        JHKTruth Playground Arena DB MySQL Sql Project will contain playground code for MySQL.
+    </description>
+
+    <scm>
+        <connection>scm:git:git://github.com/JHKTruth/playground-arena.git</connection>
+    </scm>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jhkt.playground-arena</groupId>
+            <artifactId>jpa-shared</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <!-- Hibernate uses slf4j for logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+        </dependency>
+
+        <!-- Hibernate gives you a choice of bytecode providers between cglib and javassist -->
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-annotations</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+        </dependency>
+
+    </dependencies>
+
 </project>

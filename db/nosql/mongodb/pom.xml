@@ -1,67 +1,66 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.jhkt.playground-arena.db.nosql</groupId>
+        <artifactId>nosql-project</artifactId>
+        <version>${jhkt-playground-arena.version}</version>
+    </parent>
+
     <groupId>com.jhkt.playground-arena.db.nosql</groupId>
-    <artifactId>nosql-project</artifactId>
-    <version>${jhkt-playground-arena.version}</version>
-  </parent>
-  
-  <groupId>com.jhkt.playground-arena.db.nosql</groupId>
-  <artifactId>jpa-mongodb</artifactId>
-  <packaging>jar</packaging>
-  <name>JHKTruth Playground Arena DB MongoDB NoSql Project</name>
-  <url>https://github.com/JHKTruth/playground-arena</url>
-  <description>
-    JHKTruth Playground Arena DB MongoDB NoSql Project will contain playground code for MongoDB.
-  </description>
-  
-  <scm>
-    <developerConnection>scm:git:http://github.com/JHKTruth/playground-arena/db/nosql/mongodb</developerConnection>
-  </scm>
-  
-  <dependencies>
-    
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-	</dependency>
-	
-	<dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>log4j-over-slf4j</artifactId>
-	</dependency>
-	
-	<dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>org.mongodb</groupId>
-      <artifactId>mongo-java-driver</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>org.javassist</groupId>
-      <artifactId>javassist</artifactId>
-	</dependency>
-	
-	<!--
-	If plan on using HotSwapper later, add vm arguments -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=9000
-	<dependency>
-	  <groupId>com.sun</groupId>
-      <artifactId>tools</artifactId>
-      <version>1.6.0_25</version>
-      <scope>system</scope>
-      <systemPath>${java.home}/../lib/tools.jar</systemPath>
-    </dependency>
-	-->
-	
-	<dependency>
-      <groupId>com.jhkt.playground-arena</groupId>
-      <artifactId>jpa-shared</artifactId>
-    </dependency>
-    
-  </dependencies>
-  
+    <artifactId>jpa-mongodb</artifactId>
+    <packaging>jar</packaging>
+    <name>JHKTruth Playground Arena DB MongoDB NoSql Project</name>
+    <description>
+        JHKTruth Playground Arena DB MongoDB NoSql Project will contain playground code for MongoDB.
+    </description>
+
+    <scm>
+        <connection>scm:git:git://github.com/JHKTruth/playground-arena.git</connection>
+    </scm>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+        </dependency>
+
+        <!--
+        If plan on using HotSwapper later, add vm arguments -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=9000
+        <dependency>
+            <groupId>com.sun</groupId>
+            <artifactId>tools</artifactId>
+            <version>1.6.0_25</version>
+            <scope>system</scope>
+            <systemPath>${java.home}/../lib/tools.jar</systemPath>
+        </dependency>
+        -->
+
+        <dependency>
+            <groupId>com.jhkt.playground-arena</groupId>
+            <artifactId>jpa-shared</artifactId>
+        </dependency>
+
+    </dependencies>
+
 </project>

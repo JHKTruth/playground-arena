@@ -10,13 +10,12 @@
   <artifactId>sql-project</artifactId>
   <packaging>pom</packaging>
   <name>JHKTruth Playground Arena DB Sql Main Project</name>
-  <url>https://github.com/JHKTruth/playground-arena</url>
   <description>
     JHKTruth Playground Arena DB Sql Main Project will contain sub projects for Sql modules.
   </description>
   
   <scm>
-    <developerConnection>scm:git:http://github.com/JHKTruth/playground-arena/db/sql</developerConnection>
+    <connection>scm:git:git://github.com/JHKTruth/playground-arena.git</connection>
   </scm>
   
   <modules>

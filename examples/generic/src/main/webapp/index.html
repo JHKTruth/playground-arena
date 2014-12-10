@@ -222,7 +222,7 @@
             <nav class="links genericBorderRadius genericBoxShadow">
                 <div class="linksHeader">Project Links</div>
                 <ul type="circle">
-                    <li><a data-project-link href="http://code.google.com/p/jihoonkim-playground-arena/">Code</a>
+                    <li><a data-project-link href="https://github.com/JHKTruth/playground-arena">Code</a>
                     </li> 
                 </ul>
             </nav>
@@ -244,7 +244,16 @@
             
             apacheImg.addEventListener("load", function(event) {
                 
-                var ctx = canvas.getContext("2d");
+                var ctx = canvas.getContext("2d"),
+                    addColorStop = [{pos: 1, color: 'rgba(1,159,98,0)'}, {pos: 0.9, color: '#019F62'}, {pos: 0, color: '#A7D30C'}],
+                    len = addColorStop.length,
+                    radgrad = ctx.createRadialGradient(45,45,10,52,50,30)
+                    step, coord,
+                    text = "Generic Example",
+                    linGradient = ctx.createLinearGradient(60, 100, ctx.measureText(text).width, 100),
+                    drawPaths = [{x: 170, y: 30}, {x: 150, y: 30}, {x: 165, y: 45}, {x: 157, y: 60}, {x: 180, y: 53}, {x: 203, y: 60}, {x: 195, y: 45}, {x: 210, y: 30}, {x: 190, y: 30} ],
+                    drawPathsLen = drawPaths.length;
+
                 try{
                     ctx.drawImage(apacheImg, 10, 10, 180, 80, 120, 70, 180, 80);
                     //later possibly drawImage w/ video
@@ -252,23 +261,20 @@
                     console.error("Chrome has a different API then FF ", drawerror, arguments);
                     ctx.drawImage(apacheImg, 120, 70, 180, 80);
                 }
+                
                 ctx.strokeStyle = "#E6E6FA";
                 ctx.lineWidth = 3; 
                 ctx.lineCap = 'round';
                 ctx.lineJoin = 'bevel';
                 
-                var addColorStop = [{pos: 1, color: 'rgba(1,159,98,0)'}, {pos: 0.9, color: '#019F62'}, {pos: 0, color: '#A7D30C'}], 
-                    radgrad = ctx.createRadialGradient(45,45,10,52,50,30), len = addColorStop.length;  
                 while(len--){
-                    var step = addColorStop[len];
+                    step = addColorStop[len];
                     radgrad.addColorStop(step.pos, step.color);
                 }
                 
                 ctx.fillStyle = radgrad;
                 ctx.fillRect(10, 10, 280, 130);
                 
-                var text = "Generic Example",
-                    linGradient = ctx.createLinearGradient(60, 100, ctx.measureText(text).width, 100);
                 linGradient.addColorStop(0, "#000000");
                 linGradient.addColorStop(0.5, "#FF0000");
 
@@ -282,16 +288,14 @@
                 ctx.shadowBlur = 5;
 
                 //console.info(ctx.measureText("Generic Example"));
-                ctx.fillText(text, 60, 100);
-                
-                var drawPaths = [{x: 170, y: 30}, {x: 150, y: 30}, {x: 165, y: 45}, {x: 157, y: 60}, {x: 180, y: 53}, {x: 203, y: 60}, {x: 195, y: 45}, {x: 210, y: 30}, {x: 190, y: 30} ],
-                    drawPathsLen = drawPaths.length;
-                 
+                ctx.fillText(text, 60, 100);                 
                 ctx.moveTo(180, 15);
+                
                 while(drawPathsLen--){
-                    var coord = drawPaths[drawPathsLen];
+                    coord = drawPaths[drawPathsLen];
                     ctx.lineTo(coord.x, coord.y);
                 }
+                
                 ctx.closePath();
                 ctx.stroke();
                 ctx.fillStyle = "#FAFAD2";
@@ -299,6 +303,7 @@
                 
                 ctx.save(); //do some other stuff later and possibly restore
             }, false);
+            
             apacheImg.src = apacheImageBase64;
     
             var imageSrcGetter = /^.*?;(.*)/;
@@ -318,18 +323,19 @@
                 
                 event = event || window.event;
                 
-                var result = imageSrcGetter.exec(event.dataTransfer.getData('text/plain'));
+                var result = imageSrcGetter.exec(event.dataTransfer.getData('text/plain')),
+                    posx = event.pageX - canvas.offsetLeft,
+                    posy = e.pageY - canvas.offsetTop,
+                    pasteImage = new Image();
+                
                 if(result.length > 1){
                     event.preventDefault();
                     event.cancelBubble = true;
-                    
-                    var posx = event.pageX - canvas.offsetLeft, 
-                        posy = e.pageY - canvas.offsetTop,
-                        pasteImage = new Image();
                         
                     pasteImage.addEventListener("load", function(event) {
                         canvas.drawImage(pasteImage, posx, posy);
                     }, false);
+                    
                     pasteImage.src = result[1];
                 } 
                 return false;
@@ -341,10 +347,12 @@
                     var shworker = new SharedWorker("js/worker.js");
                     shworker.port.start();
                     shworker.port.postMessage(JSON.stringify({taskClazz: "ns.GeolocationTask"}));
+                    
                     shworker.port.addEventListener("message", function(event) {
                         console.info("Worker Result ", event);
                         shworker.port.terminate();
                     }, false);
+                    
                     shworker.port.addEventListener("error", function(event) {
                         console.error("Worker Error ", event.message, event.filename, event.lineno);
                         shworker.port.terminate();
@@ -382,14 +390,20 @@
                 
                 if(dataTransfer.files){
                     dropContent = "File : ";
-                    var fileListing = dataTransfer.files, fileLength = fileListing.length;
+                    
+                    var fileListing = dataTransfer.files, 
+                        fileLength = fileListing.length,
+                        fileInfo;
+                    
                     while(fileLength--) {
-                        var fileInfo = fileListing[fileLength];
+                        fileInfo = fileListing[fileLength];
                         dropContent += fileInfo.name + "/" + fileInfo.size + ";";
                     }
+                    
                 }else{
                     dropContent = event.dataTransfer.getData('text/plain');
                 }
+                
                 this.innerHTML = dropContent;
                 return false;
             }, false);
@@ -403,6 +417,7 @@
                     
                     event = event || window.event;
                     var dataTransfer = event.dataTransfer;
+                    
                     //event.dataTransfer.setData("Text", this.getAttribute("alt"));
                     dataTransfer.setData("text/plain", "Summary of image is: " + this.dataset.imgSummary + ";" + this.src);
                     dataTransfer.setDragImage(this, 0, 0);
@@ -411,13 +426,13 @@
                 imgs[length].addEventListener("dragend", function(event) {
                     
                     event = event || window.event;
-                    var target = event.target;
-                    target.src = apacheImageBase64;
+                    event.target.src = apacheImageBase64;
                 }, false);
             }
     
             var messagePlayground = null,
                 messageInput = null;
+            
             function messageTest() {
                 messagePlayground = messagePlayground || document.getElementById("messagePlayground"),
                 messageInput = messageInput || document.getElementById("messageInput");
