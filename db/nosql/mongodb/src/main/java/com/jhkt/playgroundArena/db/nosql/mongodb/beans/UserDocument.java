@@ -46,10 +46,10 @@ public final class UserDocument extends AbstractDocument {
     UserDocument() {
         super();
         
-        _nickNames = new TreeSet<String>();
-        _creditCards = new HashSet<CreditCardDocument>();
-        _bankAccounts = new HashSet<BankAccountDocument>();
-        _shippingAddresses = new HashSet<AddressDocument>();
+        _nickNames = new TreeSet<>();
+        _creditCards = new HashSet<>();
+        _bankAccounts = new HashSet<>();
+        _shippingAddresses = new HashSet<>();
         _receipts = new HashSet<ReceiptDocument>();
     }
     

@@ -43,7 +43,7 @@ class BaseController {
 	
 	Map<String, Object> getBaseFields() {
 		
-		Map<String, Object> model = new HashMap<String, Object>();
+		Map<String, Object> model = new HashMap<>();
     	model.put(ENVIRONMENT_MODEL_KEY, env);
 		
     	return model;

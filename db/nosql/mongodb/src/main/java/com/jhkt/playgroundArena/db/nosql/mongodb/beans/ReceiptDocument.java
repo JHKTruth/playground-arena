@@ -41,7 +41,7 @@ public final class ReceiptDocument extends AbstractDocument {
     ReceiptDocument() {
         super();
         
-        _itemIds = new HashSet<String>();
+        _itemIds = new HashSet<>();
     }
     
     @IDocumentKeyValue

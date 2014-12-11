@@ -36,7 +36,7 @@ abstract class AbstractTaskRunner implements ITaskRunner {
     private List<String> _initCommandTaskNames;
     
     {
-        _initCommandTaskNames = new LinkedList<String>();
+        _initCommandTaskNames = new LinkedList<>();
     }
 	
 	public LinkedHashMap<String, Set<String>> getInitCommands() {

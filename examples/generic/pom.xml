@@ -191,45 +191,55 @@
         -->
     </dependencies>
 
-<build>
-    <plugins>
-	  <plugin>
-	    <artifactId>maven-antrun-plugin</artifactId>
-		<version>1.7</version>
-        <executions>
-          <execution>
-            <phase>process-resources</phase>
-            <configuration>
-              <target>
-				
-				<exec executable="cmd" failonerror="true">
-				  <arg value="/c" />
-				  <arg value='node "${basedir}/src/main/webapp/r.js" -o "${basedir}/src/main/webapp/app.build.js"' />
-				</exec>
-				
-              </target>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
-	  </plugin>
-	  <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <configuration>
-		  <warSourceExcludes>css/*,js/*</warSourceExcludes>
-		  <!--
-		  Exclude antlr-2.7.6.jar, antlr-3.2.jar, and antlr-runtime-3.2.jar
-		  
-		  <packagingExcludes>
-            %regex[WEB-INF/lib/antlr-(runtime-)?[\d+\.?]+.jar]
-          </packagingExcludes>
-		  -->
-        </configuration>
-       </plugin>
-	</plugins>
-  </build>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <configuration>
+                            <target>
+
+                                <exec executable="cmd" failonerror="true">
+                                    <arg value="/c" />
+                                    <arg value='node "${basedir}/src/main/webapp/r.js" -o "${basedir}/src/main/webapp/app.build.js"' />
+                                </exec>
+
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <warSourceExcludes>css/*,js/*</warSourceExcludes>
+                    <!--
+                    Exclude antlr-2.7.6.jar, antlr-3.2.jar, and antlr-runtime-3.2.jar
+
+                    <packagingExcludes>
+                        %regex[WEB-INF/lib/antlr-(runtime-)?[\d+\.?]+.jar]
+                    </packagingExcludes>
+                    -->
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <maxmem>2048m</maxmem>
+                    <meminitial>1024m</meminitial>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
   
 </project>

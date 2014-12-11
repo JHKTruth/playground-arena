@@ -47,7 +47,7 @@ public class MySQLController extends BaseController {
 	@RequestMapping(value="/welcomeView", method=RequestMethod.GET)
     public ModelAndView welcomeView() {
 		
-		Map<String, Object> model = new HashMap<String, Object>();
+		Map<String, Object> model = new HashMap<>();
 		model.put(VIEW_KEYS.USER_LIST.name(), taskRunner.getUsers());
 		
 		return new ModelAndView("mySQLWelcome", model);
@@ -56,7 +56,7 @@ public class MySQLController extends BaseController {
 	@RequestMapping(value="/viewUserInfoView", method=RequestMethod.GET)
     public ModelAndView viewUserInfoView(@RequestParam Long userId) {
 		
-		Map<String, Object> model = new HashMap<String, Object>();
+		Map<String, Object> model = new HashMap<>();
 		model.put(VIEW_KEYS.USER.name(), taskRunner.getUser(userId));
 		
 		return new ModelAndView("mySQLViewUserInfo", model);

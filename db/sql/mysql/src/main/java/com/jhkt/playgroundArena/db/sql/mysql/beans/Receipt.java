@@ -48,7 +48,7 @@ public class Receipt {
     private int HASH_CODE = -1;
     private Long id;
     private User user;
-    private Set<Item> boughtItems = new HashSet<Item>();
+    private Set<Item> boughtItems = new HashSet<>();
     private String deliminatedItemList;
     private Double total;
     private Date createdDate;

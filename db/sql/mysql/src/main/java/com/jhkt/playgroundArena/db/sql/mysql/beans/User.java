@@ -56,12 +56,12 @@ public class User {
     private String lastName;
     private String email;
     private CreditCard mainCreditCard;
-    private SortedSet<String> nickNames = new TreeSet<String>();
-    private Set<CreditCard> creditCards = new HashSet<CreditCard>();
-    private Set<BankAccount> bankAccounts = new HashSet<BankAccount>();
+    private SortedSet<String> nickNames = new TreeSet<>();
+    private Set<CreditCard> creditCards = new HashSet<>();
+    private Set<BankAccount> bankAccounts = new HashSet<>();
     private Address primaryShippingAddress;
-    private Set<Address> shippingAddresses = new HashSet<Address>();
-    private Set<Receipt> previousPurchases = new HashSet<Receipt>();
+    private Set<Address> shippingAddresses = new HashSet<>();
+    private Set<Receipt> previousPurchases = new HashSet<>();
     
     @Id
     @GeneratedValue

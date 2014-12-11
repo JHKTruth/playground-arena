@@ -60,7 +60,7 @@ public class MongoDBController extends BaseController {
     @RequestMapping(value="/viewUserInfoView/{userId}", method=RequestMethod.GET)
     public ModelAndView viewUserInfoView(@PathVariable Long userId) {
 		/*
-		Map<String, Object> model = new HashMap<String, Object>();
+		Map<String, Object> model = new HashMap<>();
 		model.put(VIEW_KEYS.USER.name(), taskRunner.getUser(userId));
 		
 		return new ModelAndView("mongoDBViewUserInfo", model);*/

@@ -39,7 +39,7 @@ public class Category {
     
     private Long id;
     private String name;
-    private Set<Item> items = new HashSet<Item>();
+    private Set<Item> items = new HashSet<>();
     
     @Id
     @GeneratedValue

@@ -36,7 +36,7 @@ public final class AverageMultipleOutputReducer extends Reducer<Text, AverageWri
     private DoubleWritable _dWriter = new DoubleWritable();
     
     protected void setup(Reducer<Text, AverageWritable, Text, DoubleWritable>.Context context) throws IOException, InterruptedException {
-        _mOutputs = new MultipleOutputs<Text, DoubleWritable>(context);
+        _mOutputs = new MultipleOutputs<>(context);
     };
     
     protected void reduce(Text key, Iterable<AverageWritable> values, Reducer<Text, AverageWritable, Text, DoubleWritable>.Context context) throws IOException, InterruptedException {

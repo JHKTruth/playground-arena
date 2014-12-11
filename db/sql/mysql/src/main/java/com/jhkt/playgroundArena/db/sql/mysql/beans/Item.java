@@ -70,10 +70,10 @@ public class Item {
     private Double shippingFee;
     private Double taxRate;
     private Date lastModified;
-    private Set<Image> images = new HashSet<Image>();
-    private Collection<Review> reviews = new ArrayList<Review>();
-    private Set<Category> categories = new HashSet<Category>();
-    private Set<Receipt> receipts = new HashSet<Receipt>();
+    private Set<Image> images = new HashSet<>();
+    private Collection<Review> reviews = new ArrayList<>();
+    private Set<Category> categories = new HashSet<>();
+    private Set<Receipt> receipts = new HashSet<>();
     private Integer version;
     
     private BigDecimal totalIncludingTax;
