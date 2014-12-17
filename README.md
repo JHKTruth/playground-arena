@@ -7,3 +7,5 @@ Playground arena from past readings
 * Hibernate for DAO with MySQL for now
 * MongoDB Java portion [possibly Cassandra later to play around]
 * Sample Hadoop code
+
+![alt text](https://github.com/JHKTruth/playground-arena/tree/master/examples/generic/src/main/webapp/images/screenshots/indexSS.jpg "Hi there")
