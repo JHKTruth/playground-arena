@@ -8,4 +8,4 @@ Playground arena from past readings
 * MongoDB Java portion [possibly Cassandra later to play around]
 * Sample Hadoop code
 
-![alt text](https://github.com/JHKTruth/playground-arena/tree/master/examples/generic/src/main/webapp/images/screenshots/indexSS.jpg "Hi there")
+![ScreenShot](https://github.com/JHKTruth/playground-arena/blob/master/examples/generic/src/main/webapp/images/screenshots/indexSS.jpg?raw=true)
