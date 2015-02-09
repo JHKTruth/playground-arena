@@ -227,7 +227,8 @@
                         <value>-u</value>
                         <value>mySQLRunner</value>
                         <value>shutdown</value>
-                        <value>-pjpaExample</value>
+                        <value>-p</value>
+                        <value>passw0rd</value>
                     </set>
                 </entry>
             </map>
