@@ -214,7 +214,7 @@
         
         <property name="initCommands">
             <map>
-                <entry key="C:\Program Files\MySQL\mysql-5.5.20-win32\bin\mysqld">
+                <entry key="C:\Program Files\MySQL\mysql-5.6.22-winx64\bin\mysqld">
                     <set></set>
                 </entry>
             </map>
@@ -222,7 +222,7 @@
         
         <property name="destroyCommands">
             <map>
-                <entry key="C:\Program Files\MySQL\mysql-5.5.20-win32\bin\mysqladmin">
+                <entry key="C:\Program Files\MySQL\mysql-5.6.22-winx64\bin\mysqladmin">
                     <set>
                         <value>-u</value>
                         <value>mySQLRunner</value>

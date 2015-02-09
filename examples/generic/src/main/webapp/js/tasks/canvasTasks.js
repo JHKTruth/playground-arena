@@ -17,11 +17,6 @@
  * under the License.
  */
 
-/*
- * For now will contain content from HTML5 Canvas book with a bit of clean up 
- * here and there with different syntax, later read upon the documentation and write own 
- * functionality.
- */
 define("tasks/canvasTasks", ["jquery", "order-min!thirdParty/sylvester", "order-min!thirdParty/glUtils"], function($) {
 	
 	var MatrixHelper = function() {
@@ -64,10 +59,12 @@ define("tasks/canvasTasks", ["jquery", "order-min!thirdParty/sylvester", "order-
 	};
 	
 	var CanvasTasks = function(canvasId, shaderFSId, shaderVSId) {
-		this.canvas = $(canvasId)[0];
+		var canvas = this.canvas = $(canvasId)[0],
+		    context = this.context = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+		
 		this.shaderFS = $(shaderFSId)[0];
 		this.shaderVS = $(shaderVSId)[0];
-		this.context = this.canvas.getContext("experimental-webgl");
+		
 		this.pMatrix = null;
 		this.shaderProgram = null;
 		this.matrixContent = new MatrixHelper();
@@ -78,13 +75,13 @@ define("tasks/canvasTasks", ["jquery", "order-min!thirdParty/sylvester", "order-
 		this.vertexIndexBuffer = null;
 		this.vertices = null;
 		
-		this.context.viewportWidth = this.canvas.width;
-		this.context.viewportHeight = this.canvas.height;
+		context.viewportWidth = canvas.width;
+		context.viewportHeight = canvas.height;
 		
-		this.context.clearColor(0.0, 0.0, 0.0, 1.0);
-		this.context.clearDepth(1.0);
-		this.context.enable(this.context.DEPTH_TEST);
-		this.context.depthFunc(this.context.LEQUAL);
+		context.clearColor(0.0, 0.0, 0.0, 1.0);
+		context.clearDepth(1.0);
+		context.enable(context.DEPTH_TEST);
+		context.depthFunc(context.LEQUAL);
 		
 		return this;
 	};
