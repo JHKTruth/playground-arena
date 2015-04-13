@@ -226,9 +226,8 @@
                     <set>
                         <value>-u</value>
                         <value>mySQLRunner</value>
+                        <value>-ppassw0rd</value>
                         <value>shutdown</value>
-                        <value>-p</value>
-                        <value>passw0rd</value>
                     </set>
                 </entry>
             </map>
